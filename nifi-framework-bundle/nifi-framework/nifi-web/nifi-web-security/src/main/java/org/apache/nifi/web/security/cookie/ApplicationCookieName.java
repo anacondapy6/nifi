@@ -23,10 +23,12 @@ import org.apache.nifi.web.security.http.SecurityCookieName;
  */
 public enum ApplicationCookieName {
     /** Authorization Bearer contains signed JSON Web Token and requires Strict Same Site handling */
-    AUTHORIZATION_BEARER(SecurityCookieName.AUTHORIZATION_BEARER.getName(), SameSitePolicy.STRICT),
+    //AUTHORIZATION_BEARER(SecurityCookieName.AUTHORIZATION_BEARER.getName(), SameSitePolicy.STRICT),
+    AUTHORIZATION_BEARER(SecurityCookieName.AUTHORIZATION_BEARER.getName(), SameSitePolicy.NONE),
 
     /** Cross-Site Request Forgery mitigation token requires Strict Same Site handling */
-    REQUEST_TOKEN(SecurityCookieName.REQUEST_TOKEN.getName(), SameSitePolicy.STRICT),
+    //REQUEST_TOKEN(SecurityCookieName.REQUEST_TOKEN.getName(), SameSitePolicy.STRICT),
+    REQUEST_TOKEN(SecurityCookieName.REQUEST_TOKEN.getName(), SameSitePolicy.NONE),
 
     /** Logout Requests can interact with external identity providers requiring no Same Site restrictions */
     LOGOUT_REQUEST_IDENTIFIER("__Secure-Logout-Request-Identifier", SameSitePolicy.NONE),

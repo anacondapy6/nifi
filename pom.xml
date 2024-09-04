@@ -619,6 +619,7 @@
                         <showDeprecation>${maven.compiler.showDeprecation}</showDeprecation>
                         <showWarnings>true</showWarnings>
                         <release>${maven.compiler.release}</release>
+                        <useIncrementalCompilation>false</useIncrementalCompilation>
                     </configuration>
                 </plugin>
                 <plugin>
