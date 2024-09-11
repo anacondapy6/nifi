@@ -36,6 +36,9 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AboutEffects } from './state/about/about.effects';
 import { StatusHistoryEffects } from './state/status-history/status-history.effects';
+
+import { StatusHomeHistoryEffects } from './state/home-history/home-history.effects';
+
 import { MatDialogModule } from '@angular/material/dialog';
 import { ControllerServiceStateEffects } from './state/contoller-service-state/controller-service-state.effects';
 import { SystemDiagnosticsEffects } from './state/system-diagnostics/system-diagnostics.effects';
@@ -76,6 +79,7 @@ import { BannerTextEffects } from './state/banner-text/banner-text.effects';
             FlowConfigurationEffects,
             LoginConfigurationEffects,
             StatusHistoryEffects,
+            StatusHomeHistoryEffects,
             ControllerServiceStateEffects,
             SystemDiagnosticsEffects,
             ComponentStateEffects,
