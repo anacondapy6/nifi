@@ -25,6 +25,10 @@ import { aboutFeatureKey, AboutState } from './about';
 import { aboutReducer } from './about/about.reducer';
 import { statusHistoryFeatureKey, StatusHistoryState } from './status-history';
 import { statusHistoryReducer } from './status-history/status-history.reducer';
+
+import { statusHomeHistoryFeatureKey, StatusHomeHistoryState } from './home-history/index';
+import { statusHomeHistoryReducer } from './home-history/home-history.reducer';
+
 import { controllerServiceStateFeatureKey, ControllerServiceState } from './contoller-service-state';
 import { controllerServiceStateReducer } from './contoller-service-state/controller-service-state.reducer';
 import { systemDiagnosticsFeatureKey, SystemDiagnosticsState } from './system-diagnostics';
@@ -59,6 +63,7 @@ export interface NiFiState {
     [flowConfigurationFeatureKey]: FlowConfigurationState;
     [loginConfigurationFeatureKey]: LoginConfigurationState;
     [statusHistoryFeatureKey]: StatusHistoryState;
+    [statusHomeHistoryFeatureKey]: StatusHomeHistoryState;
     [controllerServiceStateFeatureKey]: ControllerServiceState;
     [systemDiagnosticsFeatureKey]: SystemDiagnosticsState;
     [componentStateFeatureKey]: ComponentStateState;
@@ -78,6 +83,7 @@ export const rootReducers: ActionReducerMap<NiFiState> = {
     [flowConfigurationFeatureKey]: flowConfigurationReducer,
     [loginConfigurationFeatureKey]: loginConfigurationReducer,
     [statusHistoryFeatureKey]: statusHistoryReducer,
+    [statusHomeHistoryFeatureKey]: statusHomeHistoryReducer,
     [controllerServiceStateFeatureKey]: controllerServiceStateReducer,
     [systemDiagnosticsFeatureKey]: systemDiagnosticsReducer,
     [componentStateFeatureKey]: componentStateReducer,

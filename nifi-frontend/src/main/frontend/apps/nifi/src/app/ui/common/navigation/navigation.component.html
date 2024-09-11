@@ -164,6 +164,10 @@
                             <i class="fa mr-2"></i>
                             Animations
                         </button>
+                        <button mat-menu-item [matMenuTriggerFor]="management">
+                            <i class="fa mr-2"></i>
+                            management
+                        </button>
                     </mat-menu>
                     <mat-menu #theming="matMenu" xPosition="before">
                         <button mat-menu-item class="global-menu-item" (click)="toggleTheme(LIGHT_THEME)">
@@ -219,6 +223,18 @@
                             }
                             Device
                         </button>
+                    </mat-menu>
+
+                    <mat-menu #management="matMenu" xPosition="before">
+                        <button mat-menu-item class="global-menu-item" [routerLink]="['/management/home']">首页</button>
+                        <button mat-menu-item class="global-menu-item" [routerLink]="['/management/project']">
+                            项目管理
+                        </button>
+                        <button mat-menu-item class="global-menu-item" [routerLink]="['/summary/user']">
+                            用户管理
+                        </button>
+                        <button mat-menu-item class="global-menu-item" [routerLink]="['/summary/log']">任务日志</button>
+                        <button mat-menu-item class="global-menu-item" [routerLink]="['/summary/run']">运行日志</button>
                     </mat-menu>
                 </div>
             }
