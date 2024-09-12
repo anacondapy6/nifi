@@ -26,8 +26,8 @@ export interface VisibleInstances {
 }
 
 export const NIFI_NODE_CONFIG = {
-    nifiInstanceId: 'nifi-instance-id',
-    nifiInstanceLabel: 'NiFi'
+    nifiInstanceId: 'home-nifi-instance-id',
+    nifiInstanceLabel: 'HOME_NiFi'
 };
 
 export interface StatsNode {

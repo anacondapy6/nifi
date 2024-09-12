@@ -22,7 +22,7 @@
     @if (statusHistoryState$ | async; as statusHistoryState) {
         <div class="flex justify-between">
             <h2>Status History</h2>
-            @if (instances.length > 0 && fieldDescriptors.length > 0) {
+            <!-- @if (instances.length > 0 && fieldDescriptors.length > 0) {
                 @if (!dialogMaximized) {
                     <button
                         class="mt-2 mr-2"
@@ -42,7 +42,7 @@
                         <i class="fa fa-window-minimize"></i>
                     </button>
                 }
-            }
+            } -->
         </div>
         <error-banner></error-banner>
         <div class="status-history flex flex-col grow">
@@ -94,10 +94,10 @@
                                                 <div class="legend-entry">
                                                     <mat-checkbox
                                                         color="primary"
-                                                        value="nifi-instance-id"
+                                                        value="home-nifi-instance-id"
                                                         (change)="selectNode($event)"
                                                         [checked]="
-                                                            !!instanceVisibility['nifi-instance-id']
+                                                            !!instanceVisibility['home-nifi-instance-id']
                                                         "></mat-checkbox>
                                                     <mat-label
                                                         [ngStyle]="{
@@ -170,14 +170,14 @@
                                                     </mat-form-field>
                                                 </div>
                                             }
-                                            <status-history-chart
+                                            <home-status-history-chart
                                                 [instances]="instances"
                                                 [visibleInstances]="instanceVisibility"
                                                 [selectedFieldDescriptor]="selectedDescriptor"
                                                 (nodeStats)="nodeStatsChanged($event)"
                                                 (clusterStats)="clusterStatsChanged($event)"
                                                 class="flex flex-1 flex-col">
-                                            </status-history-chart>
+                                            </home-status-history-chart>
                                         </div>
                                     </div>
                                 }

@@ -9,12 +9,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { NifiTooltipDirective } from '@nifi/shared';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { StatusHistoryChart } from './status-history-chart/status-history-chart.component';
+import { HomeStatusHistoryChart } from './status-history-chart/status-history-chart.component';
 import { ErrorBanner } from '../../../../ui/common/error-banner/error-banner.component';
 import { HomeHistory } from './home-history.component';
 
 @NgModule({
-    declarations: [StatusHistoryChart, HomeHistory],
+    declarations: [HomeStatusHistoryChart, HomeHistory],
     exports: [HomeHistory],
     imports: [
         CommonModule,

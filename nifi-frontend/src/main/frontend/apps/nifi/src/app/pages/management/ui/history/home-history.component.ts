@@ -150,7 +150,6 @@ export class HomeHistory implements OnInit, OnDestroy, AfterViewInit {
                         .sort((a: any, b: any) => {
                             return a.label < b.label ? -1 : a.label > b.label ? 1 : 0;
                         });
-
                     // determine the min/max date
                     const minDate: any = d3.min(this.instances, (d) => {
                         return d3.min(d.snapshots, (s) => {
@@ -219,6 +218,7 @@ export class HomeHistory implements OnInit, OnDestroy, AfterViewInit {
     }
 
     clusterStatsChanged(stats: Stats) {
+        console.log('>>>>>>>>初始化');
         this.clusterStats = stats;
     }
 

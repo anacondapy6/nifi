@@ -25,11 +25,11 @@ import { debounceTime, Subject } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
-    selector: 'status-history-chart',
+    selector: 'home-status-history-chart',
     templateUrl: './status-history-chart.component.html',
     styleUrls: ['./status-history-chart.component.scss']
 })
-export class StatusHistoryChart {
+export class HomeStatusHistoryChart {
     private _instances!: Instance[];
     private _selectedDescriptor: FieldDescriptor | null = null;
     private _visibleInstances: VisibleInstances = {};
