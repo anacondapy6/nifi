@@ -218,7 +218,6 @@ export class HomeHistory implements OnInit, OnDestroy, AfterViewInit {
     }
 
     clusterStatsChanged(stats: Stats) {
-        console.log('>>>>>>>>初始化');
         this.clusterStats = stats;
     }
 
@@ -233,6 +232,8 @@ export class HomeHistory implements OnInit, OnDestroy, AfterViewInit {
     selectNode(event: MatCheckboxChange) {
         const instanceId: string = event.source.value;
         const checked: boolean = event.checked;
+        console.log('>>>>>>>instanceId', instanceId);
+        console.log('>>>>>>>checked', checked);
 
         // get the line and the control points for this instance (select all for the line to update control and main charts)
         const chartLine = d3.selectAll('path.chart-line-' + instanceId);
