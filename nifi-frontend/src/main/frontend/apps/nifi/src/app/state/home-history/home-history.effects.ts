@@ -50,16 +50,16 @@ export class StatusHomeHistoryEffects {
                     this.statusHomeHistoryService
                         .getComponentStatusHistory(request.componentType, request.componentId)
                         .pipe(
-                            map((response: any) =>
-                                StatusHomeHistoryActions.reloadStatusHomeHistorySuccess({
+                            map((response: any) => {
+                                return StatusHomeHistoryActions.reloadStatusHomeHistorySuccess({
                                     response: {
                                         statusHomeHistory: {
                                             canRead: response.canRead,
-                                            statusHomeHistory: response.statusHomeHistory
+                                            statusHomeHistory: response.statusHistory
                                         }
                                     }
-                                })
-                            ),
+                                });
+                            }),
                             catchError((errorResponse: HttpErrorResponse) =>
                                 this.bannerOrFullScreenError(errorResponse)
                             )
@@ -77,16 +77,16 @@ export class StatusHomeHistoryEffects {
             switchMap(() =>
                 from(
                     this.statusHomeHistoryService.getNodeStatusHistory().pipe(
-                        map((response: any) =>
-                            StatusHomeHistoryActions.reloadStatusHomeHistorySuccess({
+                        map((response: any) => {
+                            return StatusHomeHistoryActions.reloadStatusHomeHistorySuccess({
                                 response: {
                                     statusHomeHistory: {
                                         canRead: response.canRead,
-                                        statusHomeHistory: response.statusHomeHistory
+                                        statusHomeHistory: response.statusHistory
                                     }
                                 }
-                            })
-                        ),
+                            });
+                        }),
                         catchError((errorResponse: HttpErrorResponse) => this.bannerOrFullScreenError(errorResponse))
                     )
                 )
