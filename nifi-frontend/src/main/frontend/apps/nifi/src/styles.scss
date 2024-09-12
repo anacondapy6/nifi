@@ -62,6 +62,7 @@
 @import 'libs/shared/src/assets/themes/supplemental';
 // To override the NiFi theme, you need to set the variables $material-theme-light and $material-theme-dark
 @import 'libs/shared/src/assets/themes/material';
+@import 'ng-zorro-antd/ng-zorro-antd.min.css';
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.

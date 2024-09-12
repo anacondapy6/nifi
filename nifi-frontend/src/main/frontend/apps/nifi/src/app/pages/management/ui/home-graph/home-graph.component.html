@@ -1,1 +1,36 @@
-<p>home-graph works!</p>
+<div>
+    <div class="flex justify-between">
+        <h3>任务状态统计</h3>
+        <div>
+            <!-- 在你的组件的 HTML 模板中 -->
+            <nz-range-picker
+                [nzShowTime]="true"
+                [(ngModel)]="dateRangeValue"
+                [nzPlaceHolder]="['开始日期', '结束日期']"
+                nzFormat="yyyy-MM-dd hh:mm:ss">
+            </nz-range-picker>
+        </div>
+    </div>
+    <nz-divider style="margin: 2px 0px"></nz-divider>
+    <div class="flex flex-row h-full pt-2 gap-1">
+        <div id="home-graph" class="flex-1 h-full" style="height: calc(100vh - 460px)"></div>
+        <div id="home-table" class="flex-1 h-full">
+            <nz-table #basicTable [nzData]="listOfData">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>数量</th>
+                        <th>状态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of basicTable.data; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ data.count }}</td>
+                        <td>{{ data.status }}</td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</div>
