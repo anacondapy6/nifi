@@ -90,6 +90,12 @@ public class DocGenerator {
             final String path = coordinate.getGroup() + "/" + coordinate.getId() + "/" + coordinate.getVersion() + "/" + extensionClassName;
             final File componentDirectory = new File(explodedNiFiDocsDir, path);
             final File indexHtml = new File(componentDirectory, "index.html");
+
+            // translation
+            logger.info("翻译: {}", path);
+            org.apache.nifi.documentation.i18n.ComponentTranslationUtils.translateConfigurableComponent(extensionManager,
+                    extensionDefinition, coordinate);
+
             if (indexHtml.exists()) {
                 // index.html already exists, no need to unpack the docs again.
                 logger.debug("Existing documentation found [{}] skipped component class [{}]", indexHtml.getAbsolutePath(), extensionClassName);
