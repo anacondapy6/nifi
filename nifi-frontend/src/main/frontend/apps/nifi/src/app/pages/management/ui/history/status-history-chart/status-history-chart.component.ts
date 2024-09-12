@@ -173,7 +173,7 @@ export class HomeStatusHistoryChart {
         // ----------
 
         // the container for the main chart
-        const chartContainer = document.getElementById('status-history-chart-container')!;
+        const chartContainer = document.getElementById('home-status-history-chart-container')!;
         // clear out the dom for the chart
         chartContainer.replaceChildren();
 
@@ -211,7 +211,7 @@ export class HomeStatusHistoryChart {
 
         // build the chart svg
         const chartSvg = d3
-            .select('#status-history-chart-container')
+            .select('#home-status-history-chart-container')
             .append('svg')
             .attr('style', 'pointer-events: none;')
             .attr('width', chartContainer.clientWidth)
@@ -348,7 +348,7 @@ export class HomeStatusHistoryChart {
         // -------------
 
         // the container for the main chart control
-        const chartControlContainer = document.getElementById('status-history-chart-control-container')!;
+        const chartControlContainer = document.getElementById('home-status-history-chart-control-container')!;
         chartControlContainer.replaceChildren();
         const controlHeight = chartControlContainer.clientHeight - margin.top - margin.bottom;
 
@@ -376,7 +376,7 @@ export class HomeStatusHistoryChart {
 
         // build the svg
         const controlChartSvg = d3
-            .select('#status-history-chart-control-container')
+            .select('#home-status-history-chart-control-container')
             .append('svg')
             .attr('width', chartContainer.clientWidth)
             .attr('height', chartControlContainer.clientHeight);
@@ -617,8 +617,8 @@ export class HomeStatusHistoryChart {
     }
 
     private getChartMinHeight() {
-        const chartContainer = document.getElementById('status-history-chart-container')!;
-        const controlContainer = document.getElementById('status-history-chart-control-container')!;
+        const chartContainer = document.getElementById('home-status-history-chart-container')!;
+        const controlContainer = document.getElementById('home-status-history-chart-control-container')!;
 
         const marginTop: any = controlContainer.computedStyleMap().get('margin-top');
         return (
@@ -627,7 +627,7 @@ export class HomeStatusHistoryChart {
     }
 
     private getChartMaxHeight() {
-        const controlContainer = document.getElementById('status-history-chart-control-container')!;
+        const controlContainer = document.getElementById('home-status-history-chart-control-container')!;
 
         const marginTop: any = controlContainer.computedStyleMap().get('margin-top');
         const statusHistory = document.getElementsByClassName('status-history')![0];

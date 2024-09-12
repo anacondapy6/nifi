@@ -62,8 +62,8 @@
     }
 }
 
-:host ::ng-deep #status-history-chart-container,
-:host ::ng-deep #status-history-chart-control-container {
+:host ::ng-deep #home-status-history-chart-container,
+:host ::ng-deep #home-status-history-chart-control-container {
     overflow: hidden;
     cursor: default;
 
@@ -92,21 +92,21 @@
     }
 }
 
-:host ::ng-deep #status-history-chart-container {
+:host ::ng-deep #home-status-history-chart-container {
     height: 372px;
     cursor: default;
     overflow: hidden;
 }
 
-:host ::ng-deep #status-history-chart-control-container {
+:host ::ng-deep #home-status-history-chart-control-container {
     height: 125px;
     margin-top: 5px;
     cursor: default;
     overflow: hidden;
 }
 
-:host ::ng-deep #status-history-chart-container text,
-#status-history-chart-control-container text {
+:host ::ng-deep #home-status-history-chart-container text,
+#home-status-history-chart-control-container text {
     font-family: Arial, sans-serif;
     font-size: 10px;
 }
