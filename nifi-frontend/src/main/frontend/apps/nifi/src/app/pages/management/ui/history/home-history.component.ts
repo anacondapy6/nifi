@@ -41,7 +41,7 @@ import { filter, take } from 'rxjs';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 import * as d3 from 'd3';
-import { CloseOnEscapeDialog, NiFiCommon, TextTip } from '@nifi/shared';
+import { NiFiCommon, TextTip } from '@nifi/shared';
 import { isDefinedAndNotNull } from 'libs/shared/src';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Instance, NIFI_NODE_CONFIG, Stats } from './index';

@@ -21,9 +21,9 @@
     position: relative;
     resize: both;
     height: 720px;
-    width: 887px;
+    width: 100%;
     min-height: 720px;
-    min-width: 887px;
+    // min-width: 887px;
 
     &.maximized {
         height: 96vh;
