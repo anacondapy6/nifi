@@ -12,10 +12,12 @@
         </div>
     </div>
     <nz-divider style="margin: 2px 0px"></nz-divider>
-    <div class="flex flex-row h-full pt-2 gap-1">
-        <div id="home-graph" class="flex-1 h-full" style="height: calc(100vh - 460px)"></div>
+
+    <div *ngIf="showChart; else notShowChart" class="flex flex-row h-full pt-2 gap-1">
+        1
+        <div id="home-graph" #homeGraphContainer class="flex-1 h-full" style="height: calc(100vh - 460px)"></div>
         <div id="home-table" class="flex-1 h-full">
-            <nz-table #basicTable [nzData]="listOfData">
+            <nz-table #basicTable [nzData]="listOfData" [nzFrontPagination]="false">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -24,13 +26,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let data of basicTable.data; let i = index">
-                        <td>{{ i + 1 }}</td>
-                        <td>{{ data.count }}</td>
-                        <td>{{ data.status }}</td>
-                    </tr>
+                    <ng-container *ngIf="basicTable.data && basicTable.data.length">
+                        <tr *ngFor="let data of basicTable.data; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ data.count }}</td>
+                            <td>{{ data.status }}</td>
+                        </tr>
+                    </ng-container>
                 </tbody>
             </nz-table>
         </div>
     </div>
+
+    <ng-template #notShowChart>
+        <nz-skeleton class="mt-4" [nzActive]="true" [nzParagraph]="{ rows: 5 }"></nz-skeleton>
+    </ng-template>
 </div>

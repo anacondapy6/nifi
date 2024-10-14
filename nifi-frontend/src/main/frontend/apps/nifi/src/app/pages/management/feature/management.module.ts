@@ -13,6 +13,8 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { FormsModule } from '@angular/forms';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+
 import { registerLocaleData } from '@angular/common';
 import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);
@@ -29,7 +31,8 @@ registerLocaleData(zh);
         NzDatePickerModule,
         FormsModule,
         NzTableModule,
-        NzDividerModule
+        NzDividerModule,
+        NzSkeletonModule
     ]
 })
 export class ManagementModule {}

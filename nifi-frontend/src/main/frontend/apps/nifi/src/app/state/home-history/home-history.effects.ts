@@ -162,14 +162,13 @@ export class StatusHomeHistoryEffects {
                 ofType(StatusHomeHistoryActions.openStatusHomeHistoryDialog),
                 map((action) => action.request),
                 tap((request) => {
-                    console.log('>>>>>>>>>>requeset', request);
+                    // console.log('>>>>>>>>>>requeset', request);
                     // const dialogReference = this.dialog.open(HomeHistory, {
                     //     maxHeight: 'unset',
                     //     maxWidth: 'unset',
                     //     data: request,
                     //     autoFocus: 'dialog'
                     // });
-
                     // dialogReference.afterClosed().subscribe((response) => {
                     //     if (response !== 'ROUTED') {
                     //         if ('componentType' in request) {
