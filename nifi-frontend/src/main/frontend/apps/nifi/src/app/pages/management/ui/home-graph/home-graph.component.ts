@@ -1,7 +1,8 @@
 import { Component, AfterViewInit, OnInit, OnDestroy, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
 import * as echarts from 'echarts';
-import { IHomeTableData } from './index';
+import { IHomeTableData, IPieData } from './index';
 import { EchartsService } from '../../service/echarts-cus.service';
+import { DataService } from '../../service/home-graph.service';
 
 @Component({
     selector: 'app-home-graph',
@@ -14,25 +15,44 @@ export class HomeGraphComponent implements OnInit, AfterViewInit, AfterViewCheck
     showChart: boolean = false;
 
     listOfData: IHomeTableData[] = [];
+    pieData: IPieData = {};
     index = 0;
 
     @ViewChild('homeGraphContainer', { static: false })
     homeGraphContainer: ElementRef;
 
-    constructor(private echartsService: EchartsService) {}
+    constructor(
+        private echartsService: EchartsService,
+        private dataService: DataService
+    ) {}
 
-    onDateChange() {}
+    getInitPieData() {
+        this.dataService.loading$.subscribe((loading) => {
+            this.showChart = !loading;
+        });
+        this.dataService.fetchData('/nifi-api/flow/status').subscribe((response) => {
+            // console.log('>>>>>>>>>>>>', response);
+            this.pieData = response?.controllerStatus || {};
+            this.initTable();
+        });
+    }
 
     ngOnInit() {
-        setTimeout(() => {
-            this.listOfData = [
-                {
-                    count: 1,
-                    status: '提交成功'
-                }
-            ];
-            this.showChart = true;
-        }, 3000);
+        this.getInitPieData();
+    }
+
+    initTable() {
+        this.listOfData = [
+            { value: this.pieData.activeThreadCount || 0, name: '活跃线程数' },
+            { value: this.pieData.terminatedThreadCount || 0, name: '中断线程数' },
+            { value: this.pieData.flowFilesQueued || 0, name: '排队数据' },
+            { value: this.pieData.runningCount || 0, name: '正在运行' },
+            { value: this.pieData.stoppedCount || 0, name: '已停止' },
+            { value: this.pieData.invalidCount || 0, name: '无效' },
+            { value: this.pieData.disabledCount || 0, name: '禁用' },
+            { value: this.pieData.activeRemotePortCount || 0, name: '可执行远程端口' },
+            { value: this.pieData.inactiveRemotePortCount || 0, name: '不可知性远程端口' }
+        ];
     }
 
     initPie() {
@@ -51,15 +71,19 @@ export class HomeGraphComponent implements OnInit, AfterViewInit, AfterViewCheck
             },
             series: [
                 {
-                    name: 'Access From',
+                    name: '数量',
                     type: 'pie',
                     radius: '50%',
                     data: [
-                        { value: 1048, name: 'Search Engine' },
-                        { value: 735, name: 'Direct' },
-                        { value: 580, name: 'Email' },
-                        { value: 484, name: 'Union Ads' },
-                        { value: 300, name: 'Video Ads' }
+                        { value: this.pieData.activeThreadCount || 0, name: '活跃线程数' },
+                        { value: this.pieData.terminatedThreadCount || 0, name: '中断线程数' },
+                        { value: this.pieData.flowFilesQueued || 0, name: '排队数据' },
+                        { value: this.pieData.runningCount || 0, name: '正在运行' },
+                        { value: this.pieData.stoppedCount || 0, name: '已停止' },
+                        { value: this.pieData.invalidCount || 0, name: '无效' },
+                        { value: this.pieData.disabledCount || 0, name: '禁用' },
+                        { value: this.pieData.activeRemotePortCount || 0, name: '可执行远程端口' },
+                        { value: this.pieData.inactiveRemotePortCount || 0, name: '不可知性远程端口' }
                     ],
                     emphasis: {
                         itemStyle: {
