@@ -92,6 +92,10 @@ export class HomeGraphComponent implements OnInit, AfterViewInit, AfterViewCheck
                             shadowOffsetX: 0,
                             shadowColor: 'rgba(0, 0, 0, 0.5)'
                         }
+                    },
+                    label: {
+                        show: true,
+                        formatter: '{b}: {c} ({d}%)' // 显示名称、数值和百分比
                     }
                 }
             ]

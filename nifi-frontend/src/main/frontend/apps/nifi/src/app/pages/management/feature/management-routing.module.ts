@@ -19,6 +19,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ManagementComponent } from './management.component';
 import { HomeComponent } from '../ui/home/home.component';
+import { ProjectManagementComponent } from '../ui/project-management/project-management.component';
+import { TaskStatusComponent } from '../ui/task-status/task-status.component';
+import { UsersManagementComponent } from '../ui/users-management/users-management.component';
+import { RunLogComponent } from '../ui/run-log/run-log.component';
 
 const routes: Routes = [
     {
@@ -29,6 +33,22 @@ const routes: Routes = [
             {
                 path: 'home',
                 component: HomeComponent
+            },
+            {
+                path: 'project',
+                component: ProjectManagementComponent
+            },
+            {
+                path: 'task',
+                component: TaskStatusComponent
+            },
+            {
+                path: 'users',
+                component: UsersManagementComponent
+            },
+            {
+                path: 'log',
+                component: RunLogComponent
             }
         ]
     }

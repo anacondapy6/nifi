@@ -1,4 +1,4 @@
-<div>
+<div class="h-full">
     <div class="flex justify-between">
         <h3>任务状态统计</h3>
         <!-- <div>
@@ -12,9 +12,9 @@
     </div>
     <nz-divider style="margin: 2px 0px"></nz-divider>
 
-    <div *ngIf="showChart; else notShowChart" class="flex flex-row h-full pt-2 gap-1">
-        <div id="home-graph" #homeGraphContainer class="flex-1" style="height: calc(100vh - 260px)"></div>
-        <div id="home-table" class="flex-1 h-full">
+    <div *ngIf="showChart; else notShowChart" class="flex h-full pt-2">
+        <div id="home-graph" #homeGraphContainer class="flex-1 flex justify-center" style="height: 600px"></div>
+        <!-- <div id="home-table" class="flex-1 h-full">
             <nz-table #basicTable [nzData]="listOfData" [nzFrontPagination]="false">
                 <thead>
                     <tr>
@@ -33,7 +33,7 @@
                     </ng-container>
                 </tbody>
             </nz-table>
-        </div>
+        </div> -->
     </div>
 
     <ng-template #notShowChart>

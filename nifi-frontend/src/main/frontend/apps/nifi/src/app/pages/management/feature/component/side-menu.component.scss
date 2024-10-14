@@ -1,0 +1,17 @@
+.side-menu-wrap {
+    a {
+        /* 清除默认颜色 */
+        color: inherit; /* 继承父元素的颜色 */
+        /* 或者指定一个具体颜色 */
+        /* color: black; */
+
+        /* 清除下划线 */
+        text-decoration: none;
+
+        /* 清除访问过后的颜色 */
+        /* 如果需要的话，可以单独设置访问过后的样式 */
+        /* &:visited {
+      color: inherit;
+    } */
+    }
+}

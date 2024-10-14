@@ -14,13 +14,15 @@ import { FormsModule } from '@angular/forms';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { SideMenuComponent } from './component/side-menu.component';
 
 import { registerLocaleData } from '@angular/common';
+import { NzMenuModule } from 'ng-zorro-antd/menu';
 import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);
 
 @NgModule({
-    declarations: [ManagementComponent, HomeComponent, HomeGraphComponent],
+    declarations: [ManagementComponent, HomeComponent, HomeGraphComponent, SideMenuComponent],
     imports: [
         CommonModule,
         ManagementRoutingModule,
@@ -32,7 +34,8 @@ registerLocaleData(zh);
         FormsModule,
         NzTableModule,
         NzDividerModule,
-        NzSkeletonModule
+        NzSkeletonModule,
+        NzMenuModule
     ]
 })
 export class ManagementModule {}
