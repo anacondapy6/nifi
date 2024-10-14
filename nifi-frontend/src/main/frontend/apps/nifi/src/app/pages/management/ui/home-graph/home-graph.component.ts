@@ -62,7 +62,8 @@ export class HomeGraphComponent implements OnInit, AfterViewInit, AfterViewCheck
         // 指定图表的配置项和数据
         const option = {
             tooltip: {
-                trigger: 'item'
+                trigger: 'item',
+                formatter: '{b}: {c}'
             },
             legend: {
                 orient: 'horizontal',
