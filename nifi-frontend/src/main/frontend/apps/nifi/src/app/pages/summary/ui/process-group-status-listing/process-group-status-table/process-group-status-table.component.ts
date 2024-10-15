@@ -355,7 +355,7 @@ export class ProcessGroupStatusTable extends ComponentStatusTable<ProcessGroupSt
     getProcessGroupLink(pg: ProcessGroupStatusSnapshotEntity): string[] {
         const currentUrl = this.router.url;
         if (currentUrl && currentUrl.startsWith('/management/task/')) {
-            return ['/management/task/process-groups', pg.id];
+            // return ['/management/task/process-groups', pg.id];
         }
         return ['/process-groups', pg.id];
     }
