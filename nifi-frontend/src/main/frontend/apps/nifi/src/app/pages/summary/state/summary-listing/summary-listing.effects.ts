@@ -78,7 +78,8 @@ export class SummaryListingEffects {
                 ofType(SummaryListingActions.selectProcessorStatus),
                 map((action) => action.request),
                 tap((request) => {
-                    this.router.navigate(['/summary', 'processors', request.id]);
+                    // this.router.navigate(['/summary', 'processors', request.id]);
+                    this.handleRouter(['/summary', 'processors', request.id]);
                 })
             ),
         { dispatch: false }
@@ -89,7 +90,8 @@ export class SummaryListingEffects {
             this.actions$.pipe(
                 ofType(SummaryListingActions.clearProcessorStatusSelection),
                 tap(() => {
-                    this.router.navigate(['/summary', 'processors']);
+                    // this.router.navigate(['/summary', 'processors']);
+                    this.handleRouter(['/summary', 'processors']);
                 })
             ),
         { dispatch: false }
@@ -101,7 +103,8 @@ export class SummaryListingEffects {
                 ofType(SummaryListingActions.selectProcessGroupStatus),
                 map((action) => action.request),
                 tap((request) => {
-                    this.router.navigate(['/summary', 'process-groups', request.id]);
+                    // this.router.navigate(['/summary', 'process-groups', request.id]);
+                    this.handleRouter(['/summary', 'process-groups', request.id]);
                 })
             ),
         { dispatch: false }
@@ -112,7 +115,8 @@ export class SummaryListingEffects {
             this.actions$.pipe(
                 ofType(SummaryListingActions.clearProcessGroupStatusSelection),
                 tap(() => {
-                    this.router.navigate(['/summary', 'process-groups']);
+                    // this.router.navigate(['/summary', 'process-groups']);
+                    this.handleRouter(['/summary', 'process-groups']);
                 })
             ),
         { dispatch: false }
@@ -124,7 +128,8 @@ export class SummaryListingEffects {
                 ofType(SummaryListingActions.selectInputPortStatus),
                 map((action) => action.request),
                 tap((request) => {
-                    this.router.navigate(['/summary', 'input-ports', request.id]);
+                    // this.router.navigate(['/summary', 'input-ports', request.id]);
+                    this.handleRouter(['/summary', 'input-ports', request.id]);
                 })
             ),
         { dispatch: false }
@@ -135,7 +140,8 @@ export class SummaryListingEffects {
             this.actions$.pipe(
                 ofType(SummaryListingActions.clearInputPortStatusSelection),
                 tap(() => {
-                    this.router.navigate(['/summary', 'input-ports']);
+                    // this.router.navigate(['/summary', 'input-ports']);
+                    this.handleRouter(['/summary', 'input-ports']);
                 })
             ),
         { dispatch: false }
@@ -147,7 +153,8 @@ export class SummaryListingEffects {
                 ofType(SummaryListingActions.selectOutputPortStatus),
                 map((action) => action.request),
                 tap((request) => {
-                    this.router.navigate(['/summary', 'output-ports', request.id]);
+                    // this.router.navigate(['/summary', 'output-ports', request.id]);
+                    this.handleRouter(['/summary', 'output-ports', request.id]);
                 })
             ),
         { dispatch: false }
@@ -158,7 +165,8 @@ export class SummaryListingEffects {
             this.actions$.pipe(
                 ofType(SummaryListingActions.clearOutputPortStatusSelection),
                 tap(() => {
-                    this.router.navigate(['/summary', 'output-ports']);
+                    // this.router.navigate(['/summary', 'output-ports']);
+                    this.handleRouter(['/summary', 'output-ports']);
                 })
             ),
         { dispatch: false }
@@ -170,7 +178,8 @@ export class SummaryListingEffects {
                 ofType(SummaryListingActions.selectConnectionStatus),
                 map((action) => action.request),
                 tap((request) => {
-                    this.router.navigate(['/summary', 'connections', request.id]);
+                    // this.router.navigate(['/summary', 'connections', request.id]);
+                    this.handleRouter(['/summary', 'connections', request.id]);
                 })
             ),
         { dispatch: false }
@@ -181,7 +190,8 @@ export class SummaryListingEffects {
             this.actions$.pipe(
                 ofType(SummaryListingActions.clearConnectionStatusSelection),
                 tap(() => {
-                    this.router.navigate(['/summary', 'connections']);
+                    // this.router.navigate(['/summary', 'connections']);
+                    this.handleRouter(['/summary', 'connections']);
                 })
             ),
         { dispatch: false }
@@ -193,7 +203,8 @@ export class SummaryListingEffects {
                 ofType(SummaryListingActions.selectRemoteProcessGroupStatus),
                 map((action) => action.request),
                 tap((request) => {
-                    this.router.navigate(['/summary', 'remote-process-groups', request.id]);
+                    // this.router.navigate(['/summary', 'remote-process-groups', request.id]);
+                    this.handleRouter(['/summary', 'remote-process-groups', request.id]);
                 })
             ),
         { dispatch: false }
@@ -204,7 +215,8 @@ export class SummaryListingEffects {
             this.actions$.pipe(
                 ofType(SummaryListingActions.clearRemoteProcessGroupStatusSelection),
                 tap(() => {
-                    this.router.navigate(['/summary', 'remote-process-groups']);
+                    // this.router.navigate(['/summary', 'remote-process-groups']);
+                    this.handleRouter(['/summary', 'remote-process-groups']);
                 })
             ),
         { dispatch: false }
@@ -216,7 +228,8 @@ export class SummaryListingEffects {
                 ofType(SummaryListingActions.navigateToViewProcessorStatusHistory),
                 map((action) => action.id),
                 tap((id) => {
-                    this.router.navigate(['/summary', 'processors', id, 'history']);
+                    // this.router.navigate(['/summary', 'processors', id, 'history']);
+                    this.handleRouter(['/summary', 'processors', id, 'history']);
                 })
             ),
         { dispatch: false }
@@ -228,7 +241,8 @@ export class SummaryListingEffects {
                 ofType(SummaryListingActions.navigateToViewProcessGroupStatusHistory),
                 map((action) => action.id),
                 tap((id) => {
-                    this.router.navigate(['/summary', 'process-groups', id, 'history']);
+                    // this.router.navigate(['/summary', 'process-groups', id, 'history']);
+                    this.handleRouter(['/summary', 'process-groups', id, 'history']);
                 })
             ),
         { dispatch: false }
@@ -240,7 +254,8 @@ export class SummaryListingEffects {
                 ofType(SummaryListingActions.navigateToViewConnectionStatusHistory),
                 map((action) => action.id),
                 tap((id) => {
-                    this.router.navigate(['/summary', 'connections', id, 'history']);
+                    // this.router.navigate(['/summary', 'connections', id, 'history']);
+                    this.handleRouter(['/summary', 'connections', id, 'history']);
                 })
             ),
         { dispatch: false }
@@ -252,7 +267,8 @@ export class SummaryListingEffects {
                 ofType(SummaryListingActions.navigateToViewRemoteProcessGroupStatusHistory),
                 map((action) => action.id),
                 tap((id) => {
-                    this.router.navigate(['/summary', 'remote-process-groups', id, 'history']);
+                    // this.router.navigate(['/summary', 'remote-process-groups', id, 'history']);
+                    this.handleRouter(['/summary', 'remote-process-groups', id, 'history']);
                 })
             ),
         { dispatch: false }
@@ -266,6 +282,7 @@ export class SummaryListingEffects {
                 map((action) => action.request),
                 filter((request) => request.source === 'summary'),
                 tap((request) => {
+                    console.log('>>>>>>>>>>request', request);
                     switch (request.componentType) {
                         case ComponentType.ProcessGroup:
                             this.store.dispatch(
@@ -308,4 +325,13 @@ export class SummaryListingEffects {
             ),
         { dispatch: false }
     );
+
+    handleRouter(params: any = []) {
+        const currentUrl = this.router.url;
+        if (currentUrl && currentUrl.startsWith('/management/task/')) {
+            console.log('>>>>>>>>>>>currentUrl', currentUrl);
+            params[0] = '/management/task/';
+        }
+        this.router.navigate(params);
+    }
 }

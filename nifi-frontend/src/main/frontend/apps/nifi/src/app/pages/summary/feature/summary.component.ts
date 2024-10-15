@@ -24,6 +24,7 @@ import { selectClusterSummary } from '../../../state/cluster-summary/cluster-sum
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { isDefinedAndNotNull } from 'libs/shared/src';
 import { selectSelectedClusterNode } from '../state/summary-listing/summary-listing.selectors';
+import { Router } from '@angular/router';
 
 interface TabLink {
     label: string;
@@ -47,8 +48,13 @@ export class Summary implements OnInit, OnDestroy {
 
     clusterSummary$ = this.store.select(selectClusterSummary);
     selectedClusterNode$ = this.store.select(selectSelectedClusterNode).pipe(isDefinedAndNotNull());
+    currentUrl: string;
+    isShowHeader: boolean = true;
 
-    constructor(private store: Store<NiFiState>) {
+    constructor(
+        private store: Store<NiFiState>,
+        private router: Router
+    ) {
         this.clusterSummary$.pipe(takeUntilDestroyed(), isDefinedAndNotNull()).subscribe((clusterSummary) => {
             if (clusterSummary.connectedToCluster) {
                 this.store.dispatch(searchCluster({ request: {} }));
@@ -59,9 +65,18 @@ export class Summary implements OnInit, OnDestroy {
         });
     }
 
+    handleShowHeader() {
+        this.currentUrl = this.router.url;
+        if (this.currentUrl && this.currentUrl.startsWith('/management/task/')) {
+            this.isShowHeader = false;
+        }
+    }
+
     ngOnInit(): void {
         this.store.dispatch(loadSummaryListing({ recursive: true }));
         this.store.dispatch(loadClusterSummary());
+
+        this.handleShowHeader();
     }
 
     ngOnDestroy(): void {

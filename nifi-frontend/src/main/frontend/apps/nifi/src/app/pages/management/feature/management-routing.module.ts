@@ -40,7 +40,8 @@ const routes: Routes = [
             },
             {
                 path: 'task',
-                component: TaskStatusComponent
+                loadChildren: () => import('../../summary/feature/summary.module').then((m) => m.SummaryModule)
+                // component: TaskStatusComponent
             },
             {
                 path: 'users',

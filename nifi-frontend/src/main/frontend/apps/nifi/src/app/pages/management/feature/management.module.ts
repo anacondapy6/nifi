@@ -20,6 +20,8 @@ import { registerLocaleData } from '@angular/common';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);
+// 依赖模块
+import { SummaryModule } from '../../summary/feature/summary.module';
 
 @NgModule({
     declarations: [ManagementComponent, HomeComponent, HomeGraphComponent, SideMenuComponent],
@@ -35,7 +37,8 @@ registerLocaleData(zh);
         NzTableModule,
         NzDividerModule,
         NzSkeletonModule,
-        NzMenuModule
+        NzMenuModule,
+        SummaryModule
     ]
 })
 export class ManagementModule {}

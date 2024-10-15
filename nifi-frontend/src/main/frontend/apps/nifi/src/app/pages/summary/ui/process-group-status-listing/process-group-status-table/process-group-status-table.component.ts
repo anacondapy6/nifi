@@ -28,6 +28,7 @@ import { ProcessGroupStatusSnapshot, ProcessGroupStatusSnapshotEntity } from '..
 import { ComponentStatusTable } from '../../common/component-status-table/component-status-table.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
+import { Router } from '@angular/router';
 
 export type SupportedColumns =
     | 'name'
@@ -76,7 +77,10 @@ export class ProcessGroupStatusTable extends ComponentStatusTable<ProcessGroupSt
         'actions'
     ];
 
-    constructor(private nifiCommon: NiFiCommon) {
+    constructor(
+        private nifiCommon: NiFiCommon,
+        private router: Router
+    ) {
         super();
     }
 
@@ -349,6 +353,10 @@ export class ProcessGroupStatusTable extends ComponentStatusTable<ProcessGroupSt
     }
 
     getProcessGroupLink(pg: ProcessGroupStatusSnapshotEntity): string[] {
+        const currentUrl = this.router.url;
+        if (currentUrl && currentUrl.startsWith('/management/task/')) {
+            return ['/management/task/process-groups', pg.id];
+        }
         return ['/process-groups', pg.id];
     }
 }

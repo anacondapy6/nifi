@@ -34,10 +34,11 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { Navigation } from '../../../ui/common/navigation/navigation.component';
 import { ComponentClusterStatusEffects } from '../state/component-cluster-status/component-cluster-status.effects';
 import { BannerText } from '../../../ui/common/banner-text/banner-text.component';
+import { ProcessorStatusListing } from '../ui/processor-status-listing/processor-status-listing.component';
 
 @NgModule({
     declarations: [Summary],
-    exports: [Summary],
+    exports: [Summary, ProcessorStatusListing, SummaryRoutingModule],
     imports: [
         CommonModule,
         SummaryRoutingModule,
