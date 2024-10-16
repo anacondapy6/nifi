@@ -38,6 +38,6 @@ import { BannerText } from '../../../ui/common/banner-text/banner-text.component
         BannerText
     ],
     declarations: [FlowConfigurationHistory],
-    exports: [FlowConfigurationHistory]
+    exports: [FlowConfigurationHistory, FlowConfigurationHistoryRoutingModule]
 })
 export class FlowConfigurationHistoryModule {}

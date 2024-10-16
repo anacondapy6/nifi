@@ -15,11 +15,28 @@
  * limitations under the License.
  */
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'flow-configuration-history',
     templateUrl: './flow-configuration-history.component.html',
     styleUrls: ['./flow-configuration-history.component.scss']
 })
-export class FlowConfigurationHistory {}
+export class FlowConfigurationHistory implements OnInit {
+    currentUrl: string;
+    isShowHeader: boolean = true;
+
+    constructor(private router: Router) {}
+
+    handleShowHeader() {
+        this.currentUrl = this.router.url;
+        if (this.currentUrl && this.currentUrl.startsWith('/management/log')) {
+            this.isShowHeader = false;
+        }
+    }
+
+    ngOnInit(): void {
+        this.handleShowHeader();
+    }
+}

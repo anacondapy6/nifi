@@ -22,6 +22,7 @@ import zh from '@angular/common/locales/zh';
 registerLocaleData(zh);
 // 依赖模块
 import { SummaryModule } from '../../summary/feature/summary.module';
+import { FlowConfigurationHistoryModule } from '../../flow-configuration-history/feature/flow-configuration-history.module';
 
 @NgModule({
     declarations: [ManagementComponent, HomeComponent, HomeGraphComponent, SideMenuComponent],
@@ -38,7 +39,8 @@ import { SummaryModule } from '../../summary/feature/summary.module';
         NzDividerModule,
         NzSkeletonModule,
         NzMenuModule,
-        SummaryModule
+        SummaryModule,
+        FlowConfigurationHistoryModule
     ]
 })
 export class ManagementModule {}
