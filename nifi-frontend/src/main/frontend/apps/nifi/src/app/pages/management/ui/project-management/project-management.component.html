@@ -1,1 +1,49 @@
-<p>project-management works!</p>
+<div class="h-full px-5 flex flex-col">
+    <div class="bg-white p-5 rounded-lg">
+        <button nz-button nzType="primary" (click)="handleCreateProject()">创建项目</button>
+    </div>
+    <div class="flex-1 mt-4">
+        <div class="bg-white rounded-lg">
+            <div class="py-4 px-4">项目列表</div>
+            <nz-divider class="m-0"></nz-divider>
+            <div class="p-4">
+                <nz-table
+                    #basicTable
+                    nzShowSizeChanger
+                    [nzData]="tableData"
+                    [nzFrontPagination]="false"
+                    [nzShowQuickJumper]="true"
+                    [nzLoading]="loading"
+                    [nzTotal]="total"
+                    [nzPageSize]="pageSize"
+                    [nzPageIndex]="pageIndex"
+                    (nzQueryParams)="onQueryParamsChange($event)">
+                    <thead>
+                        <tr>
+                            <th>项目名称</th>
+                            <th>所属用户</th>
+                            <th>工作流定义数</th>
+                            <th>正在运行的流程数</th>
+                            <th>描述</th>
+                            <th>创建时间</th>
+                            <th>更新时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (data of tableData; track data; let idx = $index, e = $even) {
+                            <tr>
+                                <td>{{ data.name }}</td>
+                                <td>{{ data.user }}</td>
+                                <td>{{ data.workFlow }}</td>
+                                <td>{{ data.runWorkFlow }}</td>
+                                <td>{{ data.desc }}</td>
+                                <td>{{ data.createTime }}</td>
+                                <td>{{ data.updateTime }}</td>
+                            </tr>
+                        }
+                    </tbody>
+                </nz-table>
+            </div>
+        </div>
+    </div>
+</div>

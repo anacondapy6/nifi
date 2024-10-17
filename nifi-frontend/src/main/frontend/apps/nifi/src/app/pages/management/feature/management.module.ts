@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 // import { MatGridListModule } from '@angular/material/grid-list';
 import { ManagementRoutingModule } from './management-routing.module';
 import { ManagementComponent } from './management.component';
+import { ProjectManagementComponent } from '../ui/project-management/project-management.component';
 import { HomeComponent } from '../ui/home/home.component';
 import { HomeGraphComponent } from '../ui/home-graph/home-graph.component';
 import { BannerText } from '../../../ui/common/banner-text/banner-text.component';
@@ -25,7 +26,13 @@ import { SummaryModule } from '../../summary/feature/summary.module';
 import { FlowConfigurationHistoryModule } from '../../flow-configuration-history/feature/flow-configuration-history.module';
 
 @NgModule({
-    declarations: [ManagementComponent, HomeComponent, HomeGraphComponent, SideMenuComponent],
+    declarations: [
+        ManagementComponent,
+        HomeComponent,
+        HomeGraphComponent,
+        SideMenuComponent,
+        ProjectManagementComponent
+    ],
     imports: [
         CommonModule,
         ManagementRoutingModule,

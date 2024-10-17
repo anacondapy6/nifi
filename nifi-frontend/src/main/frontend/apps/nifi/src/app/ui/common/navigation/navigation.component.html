@@ -198,11 +198,15 @@
                         <button mat-menu-item class="global-menu-item" [routerLink]="['/management/project']">
                             项目管理
                         </button>
-                        <button mat-menu-item class="global-menu-item" [routerLink]="['/summary/user']">
+                        <button mat-menu-item class="global-menu-item" [routerLink]="['/management/users']">
                             用户管理
                         </button>
-                        <button mat-menu-item class="global-menu-item" [routerLink]="['/summary/log']">任务日志</button>
-                        <button mat-menu-item class="global-menu-item" [routerLink]="['/summary/run']">运行日志</button>
+                        <button mat-menu-item class="global-menu-item" [routerLink]="['/management/task']">
+                            任务状态
+                        </button>
+                        <button mat-menu-item class="global-menu-item" [routerLink]="['/management/log']">
+                            运行日志
+                        </button>
                     </mat-menu>
                 </div>
             }
