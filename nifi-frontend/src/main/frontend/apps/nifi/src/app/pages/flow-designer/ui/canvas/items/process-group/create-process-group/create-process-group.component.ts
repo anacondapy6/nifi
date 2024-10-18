@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, ViewChild, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { CreateProcessGroupDialogRequest } from '../../../../../state/flow';
 import { Store } from '@ngrx/store';
@@ -35,6 +35,8 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { MatIconModule } from '@angular/material/icon';
 import { NiFiCommon, TextTip, NifiTooltipDirective } from '@nifi/shared';
 import { CloseOnEscapeDialog } from '../../../../../../../ui/common/close-on-escape-dialog/close-on-escape-dialog.component';
+import { Router } from '@angular/router';
+import { FlowEffects } from '../../../../../state/flow/flow.effects';
 
 @Component({
     selector: 'create-process-group',
@@ -56,7 +58,7 @@ import { CloseOnEscapeDialog } from '../../../../../../../ui/common/close-on-esc
     templateUrl: './create-process-group.component.html',
     styleUrls: ['./create-process-group.component.scss']
 })
-export class CreateProcessGroup extends CloseOnEscapeDialog {
+export class CreateProcessGroup extends CloseOnEscapeDialog implements OnInit {
     saving$ = this.store.select(selectSaving);
 
     protected readonly TextTip = TextTip;
@@ -68,12 +70,15 @@ export class CreateProcessGroup extends CloseOnEscapeDialog {
 
     flowNameAttached: string | null = null;
     flowDefinition: File | null = null;
+    currentUrl: string = '';
 
     constructor(
         @Inject(MAT_DIALOG_DATA) private dialogRequest: CreateProcessGroupDialogRequest,
         private formBuilder: FormBuilder,
         private store: Store<CanvasState>,
-        private nifiCommon: NiFiCommon
+        private effetct: FlowEffects,
+        private nifiCommon: NiFiCommon,
+        private router: Router
     ) {
         super();
         this.parameterContextsOptions.push({
@@ -95,6 +100,10 @@ export class CreateProcessGroup extends CloseOnEscapeDialog {
             newProcessGroupName: new FormControl('', Validators.required),
             newProcessGroupParameterContext: new FormControl(dialogRequest.currentParameterContextId)
         });
+    }
+
+    ngOnInit(): void {
+        this.currentUrl = this.router.url;
     }
 
     attachFlow(event: Event): void {
@@ -141,5 +150,8 @@ export class CreateProcessGroup extends CloseOnEscapeDialog {
                 })
             );
         }
+        this.effetct.navigateWithoutTransform$.subscribe((item) => {
+            console.log('>>>>>>>>>>>item', item);
+        });
     }
 }

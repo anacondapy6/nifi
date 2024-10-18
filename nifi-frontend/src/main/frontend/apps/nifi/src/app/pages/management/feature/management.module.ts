@@ -24,6 +24,7 @@ registerLocaleData(zh);
 // 依赖模块
 import { SummaryModule } from '../../summary/feature/summary.module';
 import { FlowConfigurationHistoryModule } from '../../flow-configuration-history/feature/flow-configuration-history.module';
+import { FlowDesignerModule } from '../../flow-designer/feature/flow-designer.module';
 
 @NgModule({
     declarations: [
@@ -47,7 +48,8 @@ import { FlowConfigurationHistoryModule } from '../../flow-configuration-history
         NzSkeletonModule,
         NzMenuModule,
         SummaryModule,
-        FlowConfigurationHistoryModule
+        FlowConfigurationHistoryModule,
+        FlowDesignerModule
     ]
 })
 export class ManagementModule {}

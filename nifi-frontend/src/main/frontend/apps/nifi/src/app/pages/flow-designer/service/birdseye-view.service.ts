@@ -157,194 +157,198 @@ export class BirdseyeView {
         // scale the translation
         const translate: [number, number] = [this.x / this.k, this.y / this.k];
 
-        const canvasContainer: any = document.getElementById('canvas-container');
-        const canvasBoundingBox: any = canvasContainer.getBoundingClientRect();
-        const canvas: any = d3.select('#canvas').node();
+        try {
+            const canvasContainer: any = document.getElementById('canvas-container');
+            const canvasBoundingBox: any = canvasContainer.getBoundingClientRect();
+            const canvas: any = d3.select('#canvas').node();
 
-        // get the bounding box for the graph and convert into canvas space
-        const graphBox = canvas.getBoundingClientRect();
-        const graphLeft: number = graphBox.left / this.k - translate[0];
-        const graphTop: number = (graphBox.top - canvasBoundingBox.top) / this.k - translate[1];
-        const graphRight: number = graphBox.right / this.k - translate[0];
-        const graphBottom: number = graphBox.bottom / this.k - translate[1];
+            // get the bounding box for the graph and convert into canvas space
+            const graphBox = canvas.getBoundingClientRect();
+            const graphLeft: number = graphBox.left / this.k - translate[0];
+            const graphTop: number = (graphBox.top - canvasBoundingBox.top) / this.k - translate[1];
+            const graphRight: number = graphBox.right / this.k - translate[0];
+            const graphBottom: number = graphBox.bottom / this.k - translate[1];
 
-        // get the screen bounding box and convert into canvas space
-        const screenWidth: number = canvasBoundingBox.width / this.k;
-        const screenHeight: number = canvasBoundingBox.height / this.k;
-        const screenLeft: number = -translate[0];
-        const screenTop: number = -translate[1];
-        const screenRight: number = screenLeft + screenWidth;
-        const screenBottom: number = screenTop + screenHeight;
+            // get the screen bounding box and convert into canvas space
+            const screenWidth: number = canvasBoundingBox.width / this.k;
+            const screenHeight: number = canvasBoundingBox.height / this.k;
+            const screenLeft: number = -translate[0];
+            const screenTop: number = -translate[1];
+            const screenRight: number = screenLeft + screenWidth;
+            const screenBottom: number = screenTop + screenHeight;
 
-        // determine the maximum size of the canvas given the graph and the visible portion on the screen
-        const canvasLeft: number = Math.min(graphLeft, screenLeft);
-        const canvasTop: number = Math.min(graphTop, screenTop);
-        const canvasRight: number = Math.max(graphRight, screenRight);
-        const canvasBottom: number = Math.max(graphBottom, screenBottom);
-        const canvasWidth: number = canvasRight - canvasLeft;
-        const canvasHeight: number = canvasBottom - canvasTop;
+            // determine the maximum size of the canvas given the graph and the visible portion on the screen
+            const canvasLeft: number = Math.min(graphLeft, screenLeft);
+            const canvasTop: number = Math.min(graphTop, screenTop);
+            const canvasRight: number = Math.max(graphRight, screenRight);
+            const canvasBottom: number = Math.max(graphBottom, screenBottom);
+            const canvasWidth: number = canvasRight - canvasLeft;
+            const canvasHeight: number = canvasBottom - canvasTop;
 
-        // get the width/height we have to work with
-        const birdseye: any = document.getElementById('birdseye');
-        const birdseyeBox: any = birdseye.getBoundingClientRect();
-        const birdseyeWidth: number = birdseyeBox.width;
-        const birdseyeHeight: number = birdseyeBox.height;
+            // get the width/height we have to work with
+            const birdseye: any = document.getElementById('birdseye');
+            const birdseyeBox: any = birdseye.getBoundingClientRect();
+            const birdseyeWidth: number = birdseyeBox.width;
+            const birdseyeHeight: number = birdseyeBox.height;
 
-        // determine the appropriate scale for the birdseye (min scale to accommodate total width and height)
-        const birdseyeWidthScale: number = birdseyeWidth / canvasWidth;
-        const birdseyeHeightScale: number = birdseyeHeight / canvasHeight;
-        const birdseyeScale: number = Math.min(birdseyeWidthScale, birdseyeHeightScale);
+            // determine the appropriate scale for the birdseye (min scale to accommodate total width and height)
+            const birdseyeWidthScale: number = birdseyeWidth / canvasWidth;
+            const birdseyeHeightScale: number = birdseyeHeight / canvasHeight;
+            const birdseyeScale: number = Math.min(birdseyeWidthScale, birdseyeHeightScale);
 
-        // calculate the translation for the birdseye and the brush
-        let birdseyeTranslate: [number, number] = [0, 0];
-        let brushTranslate: [number, number] = [0, 0];
-        if (translate[0] < 0 && translate[1] < 0) {
-            birdseyeTranslate = [0, 0];
-            brushTranslate = [-translate[0], -translate[1]];
-        } else if (translate[0] >= 0 && translate[1] < 0) {
-            birdseyeTranslate = [translate[0], 0];
-            brushTranslate = [0, -translate[1]];
-        } else if (translate[0] < 0 && translate[1] >= 0) {
-            birdseyeTranslate = [0, translate[1]];
-            brushTranslate = [-translate[0], 0];
-        } else {
-            birdseyeTranslate = [translate[0], translate[1]];
-            brushTranslate = [0, 0];
-        }
-
-        // offset in case the graph has positive/negative coordinates and panning appropriately
-        let offsetX = 0;
-        const left: number = -graphLeft;
-        if (translate[0] < 0) {
-            if (translate[0] < left) {
-                offsetX = left;
+            // calculate the translation for the birdseye and the brush
+            let birdseyeTranslate: [number, number] = [0, 0];
+            let brushTranslate: [number, number] = [0, 0];
+            if (translate[0] < 0 && translate[1] < 0) {
+                birdseyeTranslate = [0, 0];
+                brushTranslate = [-translate[0], -translate[1]];
+            } else if (translate[0] >= 0 && translate[1] < 0) {
+                birdseyeTranslate = [translate[0], 0];
+                brushTranslate = [0, -translate[1]];
+            } else if (translate[0] < 0 && translate[1] >= 0) {
+                birdseyeTranslate = [0, translate[1]];
+                brushTranslate = [-translate[0], 0];
             } else {
-                offsetX = left - (left - translate[0]);
+                birdseyeTranslate = [translate[0], translate[1]];
+                brushTranslate = [0, 0];
             }
-        } else {
-            if (translate[0] < left) {
-                offsetX = left - translate[0];
-            }
-        }
-        let offsetY = 0;
-        const top: number = -graphTop;
-        if (translate[1] < 0) {
-            if (translate[1] < top) {
-                offsetY = top;
+
+            // offset in case the graph has positive/negative coordinates and panning appropriately
+            let offsetX = 0;
+            const left: number = -graphLeft;
+            if (translate[0] < 0) {
+                if (translate[0] < left) {
+                    offsetX = left;
+                } else {
+                    offsetX = left - (left - translate[0]);
+                }
             } else {
-                offsetY = top - (top - translate[1]);
+                if (translate[0] < left) {
+                    offsetX = left - translate[0];
+                }
             }
-        } else {
-            if (translate[1] < top) {
-                offsetY = top - translate[1];
+            let offsetY = 0;
+            const top: number = -graphTop;
+            if (translate[1] < 0) {
+                if (translate[1] < top) {
+                    offsetY = top;
+                } else {
+                    offsetY = top - (top - translate[1]);
+                }
+            } else {
+                if (translate[1] < top) {
+                    offsetY = top - translate[1];
+                }
             }
-        }
 
-        // adjust the translations of the birdseye and brush to account for the offset
-        birdseyeTranslate = [birdseyeTranslate[0] + offsetX, birdseyeTranslate[1] + offsetY];
-        brushTranslate = [brushTranslate[0] + offsetX, brushTranslate[1] + offsetY];
+            // adjust the translations of the birdseye and brush to account for the offset
+            birdseyeTranslate = [birdseyeTranslate[0] + offsetX, birdseyeTranslate[1] + offsetY];
+            brushTranslate = [brushTranslate[0] + offsetX, brushTranslate[1] + offsetY];
 
-        // update the birdseye
-        this.birdseyeGroup.attr('transform', 'scale(' + birdseyeScale + ')');
-        this.componentGroup.attr('transform', 'translate(' + birdseyeTranslate + ')');
+            // update the birdseye
+            this.birdseyeGroup.attr('transform', 'scale(' + birdseyeScale + ')');
+            this.componentGroup.attr('transform', 'translate(' + birdseyeTranslate + ')');
 
-        // update the brush
-        d3.select('rect.birdseye-brush')
-            .attr('width', screenWidth)
-            .attr('height', screenHeight)
-            .attr('stroke-width', 2 / birdseyeScale)
-            .attr('transform', function (d: any) {
-                d.x = brushTranslate[0];
-                d.y = brushTranslate[1];
+            // update the brush
+            d3.select('rect.birdseye-brush')
+                .attr('width', screenWidth)
+                .attr('height', screenHeight)
+                .attr('stroke-width', 2 / birdseyeScale)
+                .attr('transform', function (d: any) {
+                    d.x = brushTranslate[0];
+                    d.y = brushTranslate[1];
 
-                return 'translate(' + brushTranslate + ')';
+                    return 'translate(' + brushTranslate + ')';
+                });
+
+            // redraw the canvas
+            const canvasElement: any = d3.select('#birdseye-canvas').node();
+            const context = canvasElement.getContext('2d');
+            context.save();
+
+            // clear the current canvas
+            context.setTransform(1, 0, 0, 1, 0, 0);
+            context.clearRect(0, 0, canvasElement.width, canvasElement.height);
+
+            context.restore();
+            context.save();
+
+            // apply the current transformation
+            context.translate(birdseyeTranslate[0] * birdseyeScale, birdseyeTranslate[1] * birdseyeScale);
+            context.scale(birdseyeScale, birdseyeScale);
+
+            // labels
+            this.labelManager.selectAll().each((d: ComponentEntityWithDimensions) => {
+                // default color
+                let color = '#fff7d7';
+
+                if (d.permissions.canRead) {
+                    // use the specified color if appropriate
+                    if (d.component.style['background-color']) {
+                        color = d.component.style['background-color'];
+                    }
+                }
+
+                // determine border color
+                const strokeColor: string = this.canvasUtils.determineContrastColor(
+                    this.nifiCommon.substringAfterLast(color, '#')
+                );
+
+                context.fillStyle = color;
+                context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
+                context.strokeStyle = strokeColor;
+                context.strokeRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
             });
 
-        // redraw the canvas
-        const canvasElement: any = d3.select('#birdseye-canvas').node();
-        const context = canvasElement.getContext('2d');
-        context.save();
+            // funnels
+            context.fillStyle = '#ad9897';
+            this.funnelManager.selectAll().each(function (d: any) {
+                context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
+            });
 
-        // clear the current canvas
-        context.setTransform(1, 0, 0, 1, 0, 0);
-        context.clearRect(0, 0, canvasElement.width, canvasElement.height);
+            // ports
+            context.fillStyle = '#bbdcde';
+            this.portManager.selectAll().each(function (d: any) {
+                context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
+            });
 
-        context.restore();
-        context.save();
+            // remote process groups
+            context.fillStyle = '#728e9b';
+            this.remoteProcessGroupManager.selectAll().each(function (d: any) {
+                context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
+            });
 
-        // apply the current transformation
-        context.translate(birdseyeTranslate[0] * birdseyeScale, birdseyeTranslate[1] * birdseyeScale);
-        context.scale(birdseyeScale, birdseyeScale);
+            // process groups
+            this.processGroupManager.selectAll().each(function (d: any) {
+                context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
+            });
 
-        // labels
-        this.labelManager.selectAll().each((d: ComponentEntityWithDimensions) => {
-            // default color
-            let color = '#fff7d7';
+            // processors
+            this.processorManager.selectAll().each((d: ComponentEntityWithDimensions) => {
+                // default color
+                let color = '#dde4eb';
 
-            if (d.permissions.canRead) {
-                // use the specified color if appropriate
-                if (d.component.style['background-color']) {
-                    color = d.component.style['background-color'];
+                if (d.permissions.canRead) {
+                    // use the specified color if appropriate
+                    if (d.component.style['background-color']) {
+                        color = d.component.style['background-color'];
+                    }
                 }
-            }
 
-            // determine border color
-            const strokeColor: string = this.canvasUtils.determineContrastColor(
-                this.nifiCommon.substringAfterLast(color, '#')
-            );
+                // determine border color
+                const strokeColor: string = this.canvasUtils.determineContrastColor(
+                    this.nifiCommon.substringAfterLast(color, '#')
+                );
 
-            context.fillStyle = color;
-            context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
-            context.strokeStyle = strokeColor;
-            context.strokeRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
-        });
+                context.fillStyle = color;
+                context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
+                context.strokeStyle = strokeColor;
+                context.strokeRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
+            });
 
-        // funnels
-        context.fillStyle = '#ad9897';
-        this.funnelManager.selectAll().each(function (d: any) {
-            context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
-        });
-
-        // ports
-        context.fillStyle = '#bbdcde';
-        this.portManager.selectAll().each(function (d: any) {
-            context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
-        });
-
-        // remote process groups
-        context.fillStyle = '#728e9b';
-        this.remoteProcessGroupManager.selectAll().each(function (d: any) {
-            context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
-        });
-
-        // process groups
-        this.processGroupManager.selectAll().each(function (d: any) {
-            context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
-        });
-
-        // processors
-        this.processorManager.selectAll().each((d: ComponentEntityWithDimensions) => {
-            // default color
-            let color = '#dde4eb';
-
-            if (d.permissions.canRead) {
-                // use the specified color if appropriate
-                if (d.component.style['background-color']) {
-                    color = d.component.style['background-color'];
-                }
-            }
-
-            // determine border color
-            const strokeColor: string = this.canvasUtils.determineContrastColor(
-                this.nifiCommon.substringAfterLast(color, '#')
-            );
-
-            context.fillStyle = color;
-            context.fillRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
-            context.strokeStyle = strokeColor;
-            context.strokeRect(d.position.x, d.position.y, d.dimensions.width, d.dimensions.height);
-        });
-
-        context.restore();
+            context.restore();
+        } catch (err) {
+            console.log(err);
+        }
     }
 }

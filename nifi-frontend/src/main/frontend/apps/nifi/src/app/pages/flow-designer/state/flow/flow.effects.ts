@@ -525,14 +525,15 @@ export class FlowEffects {
             concatLatestFrom(() => this.store.select(selectCurrentProcessGroupId)),
             switchMap(([request, processGroupId]) =>
                 from(this.flowService.createProcessGroup(processGroupId, request)).pipe(
-                    map((response) =>
-                        FlowActions.createComponentSuccess({
+                    map((response) => {
+                        console.log('>>>>>>>>>>创建成功response', response, [request, processGroupId]);
+                        return FlowActions.createComponentSuccess({
                             response: {
                                 type: request.type,
                                 payload: response
                             }
-                        })
-                    ),
+                        });
+                    }),
                     catchError((errorResponse: HttpErrorResponse) => of(this.bannerOrFullScreenError(errorResponse)))
                 )
             )
@@ -2550,6 +2551,11 @@ export class FlowEffects {
                 ofType(FlowActions.navigateWithoutTransform),
                 map((action) => action.url),
                 tap((url) => {
+                    // 不知道咋整
+                    if (this.router.url.startsWith('/management/project')) {
+                        // this.dialog.closeAll();
+                        return;
+                    }
                     this.router.navigate(url);
                 })
             ),

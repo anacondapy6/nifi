@@ -30,10 +30,12 @@ import { ControllerServicesEffects } from '../state/controller-services/controll
 import { ParameterEffects } from '../state/parameter/parameter.effects';
 import { QueueEffects } from '../state/queue/queue.effects';
 import { BannerText } from '../../../ui/common/banner-text/banner-text.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { CommonCreateProjectComponent } from '../ui/canvas/header/common-create-project/common-create-project.component';
 
 @NgModule({
-    declarations: [FlowDesigner, VersionControlTip],
-    exports: [FlowDesigner],
+    declarations: [FlowDesigner, VersionControlTip, CommonCreateProjectComponent],
+    exports: [FlowDesigner, CommonCreateProjectComponent],
     imports: [
         CommonModule,
         FlowDesignerRoutingModule,
@@ -47,7 +49,8 @@ import { BannerText } from '../../../ui/common/banner-text/banner-text.component
         ),
         NgOptimizedImage,
         MatDialogModule,
-        BannerText
+        BannerText,
+        NzButtonModule
     ]
 })
 export class FlowDesignerModule {}
