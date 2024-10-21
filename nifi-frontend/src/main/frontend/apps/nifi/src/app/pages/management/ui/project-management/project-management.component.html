@@ -5,38 +5,37 @@
             <div class="py-4 px-4">项目列表</div>
             <nz-divider class="m-0"></nz-divider>
             <div class="p-4">
-                <nz-table
-                    #basicTable
-                    nzShowSizeChanger
-                    [nzData]="tableData"
-                    [nzFrontPagination]="false"
+                <!-- [nzFrontPagination]="false"
                     [nzShowQuickJumper]="true"
                     [nzLoading]="loading"
                     [nzTotal]="total"
                     [nzPageSize]="pageSize"
                     [nzPageIndex]="pageIndex"
-                    (nzQueryParams)="onQueryParamsChange($event)">
+                    (nzQueryParams)="onQueryParamsChange($event)" -->
+                <nz-table #basicTable nzShowSizeChanger [nzData]="tableData" [nzShowQuickJumper]="true">
                     <thead>
                         <tr>
-                            <th>项目名称</th>
-                            <th>所属用户</th>
-                            <th>工作流定义数</th>
-                            <th>正在运行的流程数</th>
-                            <th>描述</th>
-                            <th>创建时间</th>
-                            <th>更新时间</th>
+                            <th>名称</th>
+                            <th>可读</th>
+                            <th>可写</th>
+                            <th>执行引擎</th>
+                            <th>运行节点</th>
+                            <th>停止节点</th>
+                            <th>失效节点</th>
+                            <th>备注</th>
                         </tr>
                     </thead>
                     <tbody>
                         @for (data of tableData; track data; let idx = $index, e = $even) {
                             <tr>
-                                <td>{{ data.name }}</td>
-                                <td>{{ data.user }}</td>
-                                <td>{{ data.workFlow }}</td>
-                                <td>{{ data.runWorkFlow }}</td>
-                                <td>{{ data.desc }}</td>
-                                <td>{{ data.createTime }}</td>
-                                <td>{{ data.updateTime }}</td>
+                                <td>{{ data.status.name }}</td>
+                                <td>{{ data.permissions.canRead }}</td>
+                                <td>{{ data.permissions.canWrite }}</td>
+                                <td>{{ data.component.executionEngine }}</td>
+                                <td>{{ data.component.runningCount }}</td>
+                                <td>{{ data.component.stoppedCount }}</td>
+                                <td>{{ data.component.invalidCount }}</td>
+                                <td>{{ data.component.comments }}</td>
                             </tr>
                         }
                     </tbody>

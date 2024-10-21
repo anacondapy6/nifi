@@ -12,10 +12,10 @@ export class DataService {
 
     constructor(private http: HttpClient) {}
 
-    fetchData(url: string): Observable<any> {
+    fetchData(url: string, params?: any): Observable<any> {
         this.loadingSubject.next(true); // 开始加载
 
-        return this.http.get(url).pipe(
+        return this.http.get(url, params).pipe(
             tap(() => this.loadingSubject.next(false)) // 加载完成
         );
     }
