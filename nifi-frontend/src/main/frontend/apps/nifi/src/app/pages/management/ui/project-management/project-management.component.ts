@@ -16,6 +16,7 @@ export class ProjectManagementComponent implements OnInit {
     pageIndex: number = 1;
     loading: boolean = true;
     total: number = 30;
+    id: string = '';
 
     constructor(
         private dataService: DataService,
@@ -32,6 +33,7 @@ export class ProjectManagementComponent implements OnInit {
             })
             .subscribe((response: any) => {
                 const data = response?.processGroupStatus || {};
+                this.id = data?.id;
                 this.getTableData(data?.id);
             });
     }
@@ -63,5 +65,10 @@ export class ProjectManagementComponent implements OnInit {
 
     handleCreateProject() {
         console.log('创建项目');
+    }
+
+    handleNotification(item: any) {
+        // console.log('>>>>>>>>>>>item', item);
+        this.getTableData(this.id);
     }
 }

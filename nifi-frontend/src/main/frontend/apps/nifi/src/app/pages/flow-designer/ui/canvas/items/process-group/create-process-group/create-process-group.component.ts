@@ -150,8 +150,5 @@ export class CreateProcessGroup extends CloseOnEscapeDialog implements OnInit {
                 })
             );
         }
-        this.effetct.navigateWithoutTransform$.subscribe((item) => {
-            console.log('>>>>>>>>>>>item', item);
-        });
     }
 }

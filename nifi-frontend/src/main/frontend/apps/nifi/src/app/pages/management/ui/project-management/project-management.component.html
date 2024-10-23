@@ -1,5 +1,5 @@
 <div class="h-full px-5 flex flex-col">
-    <app-common-create-project></app-common-create-project>
+    <app-common-create-project (notify)="handleNotification($event)"></app-common-create-project>
     <div class="flex-1 mt-4">
         <div class="bg-white rounded-lg">
             <div class="py-4 px-4">项目列表</div>
