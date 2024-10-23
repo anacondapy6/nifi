@@ -27,7 +27,7 @@
                     </thead>
                     <tbody>
                         @for (data of tableData; track data; let idx = $index, e = $even) {
-                            <tr>
+                            <tr class="cursor-pointer" (dblclick)="handleDoubleClick(data)">
                                 <td>{{ data.status.name }}</td>
                                 <td>{{ data.permissions.canRead }}</td>
                                 <td>{{ data.permissions.canWrite }}</td>

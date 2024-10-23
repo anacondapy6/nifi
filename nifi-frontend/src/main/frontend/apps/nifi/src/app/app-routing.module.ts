@@ -117,14 +117,17 @@ const routes: Routes = [
         canMatch: [authenticationGuard],
         loadChildren: () => import('./pages/management/feature/management.module').then((m) => m.ManagementModule)
     },
+    // {
+    //     path: '',
+    //     canMatch: [authenticationGuard],
+    //     redirectTo: '/management',
+    //     pathMatch: 'full'
+    // },
     {
         path: '',
         canMatch: [authenticationGuard],
-        redirectTo: '/management',
-        pathMatch: 'full'
-        // loadChildren: () => import('./pages/management/feature/management.module').then((m) => m.ManagementModule)
-        // loadChildren: () =>
-        //     import('./pages/flow-designer/feature/flow-designer.module').then((m) => m.FlowDesignerModule)
+        loadChildren: () =>
+            import('./pages/flow-designer/feature/flow-designer.module').then((m) => m.FlowDesignerModule)
     },
     {
         path: '**',

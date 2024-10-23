@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 // import { tap } from 'rxjs/operators';
 // import { IProjectListData } from './index';
 import { DataService } from '../../service/home-graph.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-project-management',
@@ -20,7 +21,8 @@ export class ProjectManagementComponent implements OnInit {
 
     constructor(
         private dataService: DataService,
-        private http: HttpClient
+        private http: HttpClient,
+        private router: Router
     ) {}
 
     getParamsId() {
@@ -50,7 +52,7 @@ export class ProjectManagementComponent implements OnInit {
             })
             .subscribe((response: any) => {
                 this.tableData = response?.processGroupFlow?.flow?.processGroups || [];
-                // console.log('>>>>>>>>>>>>', this.tableData[0].status);
+                // console.log('>>>>>>>>>>>>tableData', this.tableData);
             });
     }
 
@@ -68,7 +70,14 @@ export class ProjectManagementComponent implements OnInit {
     }
 
     handleNotification(item: any) {
-        // console.log('>>>>>>>>>>>item', item);
         this.getTableData(this.id);
+    }
+
+    handleDoubleClick(tableItem: any) {
+        // console.log('>>>>>>>>>>>tableItem', tableItem);
+        // this.router.navigate([]);
+        const baseUrl = window.location.origin + window.location.pathname;
+        const fullUrl = baseUrl + `#/process-groups/${tableItem.id}`;
+        window.open(fullUrl, '_blank');
     }
 }
