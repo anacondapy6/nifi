@@ -61,7 +61,7 @@ export class AccessEffects {
             this.actions$.pipe(
                 ofType(AccessActions.loginSuccess),
                 tap(() => {
-                    this.router.navigate(['/']);
+                    this.router.navigate(['/management']);
                 })
             ),
         { dispatch: false }

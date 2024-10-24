@@ -22,7 +22,7 @@
             @if (logoutSupported()) {
                 <a (click)="logout()" class="whitespace-nowrap">log out</a>
             }
-            <a (click)="resetRoutedToFullScreenError()" [routerLink]="['/']">home</a>
+            <a (click)="resetRoutedToFullScreenError()" [routerLink]="['/management']">home</a>
         </div>
     </div>
     <ng-content></ng-content>
