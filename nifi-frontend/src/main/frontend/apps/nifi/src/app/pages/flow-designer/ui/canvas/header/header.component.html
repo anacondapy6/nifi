@@ -23,49 +23,49 @@
                 [disabled]="!canvasPermissions.canWrite"
                 iconClass="icon-processor"
                 iconHoverClass="icon-processor-add"
-                tooltip="Processor"></new-canvas-item>
+                tooltip="处理器"></new-canvas-item>
             <new-canvas-item
                 [type]="ComponentType.InputPort"
                 [disabled]="!canvasPermissions.canWrite"
                 iconClass="icon-port-in"
                 iconHoverClass="icon-port-in-add"
-                tooltip="Input Port"></new-canvas-item>
+                tooltip="输入端口"></new-canvas-item>
             <new-canvas-item
                 [type]="ComponentType.OutputPort"
                 [disabled]="!canvasPermissions.canWrite"
                 iconClass="icon-port-out"
                 iconHoverClass="icon-port-out-add"
-                tooltip="Output Port"></new-canvas-item>
+                tooltip="输出端口"></new-canvas-item>
             <new-canvas-item
                 [type]="ComponentType.ProcessGroup"
                 [disabled]="!canvasPermissions.canWrite"
                 iconClass="icon-group"
                 iconHoverClass="icon-group-add"
-                tooltip="Process Group"></new-canvas-item>
+                tooltip="处理组"></new-canvas-item>
             <new-canvas-item
                 [type]="ComponentType.RemoteProcessGroup"
                 [disabled]="!canvasPermissions.canWrite"
                 iconClass="icon-group-remote"
                 iconHoverClass="icon-group-remote-add"
-                tooltip="Remote Process Group"></new-canvas-item>
+                tooltip="远程处理组"></new-canvas-item>
             <new-canvas-item
                 [type]="ComponentType.Funnel"
                 [disabled]="!canvasPermissions.canWrite"
                 iconClass="icon-funnel"
                 iconHoverClass="icon-funnel-add"
-                tooltip="Funnel"></new-canvas-item>
-            <new-canvas-item
-                [type]="ComponentType.Flow"
-                [disabled]="!canvasPermissions.canWrite"
-                iconClass="icon-import-from-registry"
-                iconHoverClass="icon-import-from-registry-add"
-                tooltip="Import from Registry"></new-canvas-item>
+                tooltip="漏斗"></new-canvas-item>
+<!--            <new-canvas-item-->
+<!--                [type]="ComponentType.Flow"-->
+<!--                [disabled]="!canvasPermissions.canWrite"-->
+<!--                iconClass="icon-import-from-registry"-->
+<!--                iconHoverClass="icon-import-from-registry-add"-->
+<!--                tooltip="Import from Registry"></new-canvas-item>-->
             <new-canvas-item
                 [type]="ComponentType.Label"
                 [disabled]="!canvasPermissions.canWrite"
                 iconClass="icon-label"
                 iconHoverClass="icon-label-add"
-                tooltip="Label"></new-canvas-item>
+                tooltip="标签"></new-canvas-item>
         }
     </navigation>
     <flow-status

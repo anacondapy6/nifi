@@ -1,6 +1,6 @@
 <div class="h-full px-5">
     <div class="flex justify-between">
-        <h3 class="primary-color">任务状态统计</h3>
+        <h2>任务状态统计</h2>
         <!-- <div>
             <nz-range-picker
                 [nzShowTime]="true"
@@ -10,10 +10,10 @@
             </nz-range-picker>
         </div> -->
     </div>
-    <nz-divider style="margin: 2px 0px"></nz-divider>
+<!--    <nz-divider style="margin: 2px 0px"></nz-divider>-->
 
     <div *ngIf="showChart; else notShowChart" class="flex h-full pt-2">
-        <div id="home-graph" #homeGraphContainer class="flex-1 flex justify-center" style="height: 600px"></div>
+        <div id="home-graph" #homeGraphContainer class="flex-1 flex justify-center" style="height: 700px"></div>
         <!-- <div id="home-table" class="flex-1 h-full">
             <nz-table #basicTable [nzData]="listOfData" [nzFrontPagination]="false">
                 <thead>
