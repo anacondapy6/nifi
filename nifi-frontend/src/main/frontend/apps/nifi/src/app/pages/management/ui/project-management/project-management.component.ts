@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NzTableQueryParams } from 'ng-zorro-antd/table';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 // import { tap } from 'rxjs/operators';
 // import { IProjectListData } from './index';
 import { DataService } from '../../service/home-graph.service';
 import { Router } from '@angular/router';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { catchError } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
 
 @Component({
     selector: 'app-project-management',
@@ -22,7 +25,8 @@ export class ProjectManagementComponent implements OnInit {
     constructor(
         private dataService: DataService,
         private http: HttpClient,
-        private router: Router
+        private router: Router,
+        private message: NzMessageService
     ) {}
 
     getParamsId() {
@@ -74,10 +78,37 @@ export class ProjectManagementComponent implements OnInit {
     }
 
     handleDoubleClick(tableItem: any) {
-        // console.log('>>>>>>>>>>>tableItem', tableItem);
         // this.router.navigate([]);
         const baseUrl = window.location.origin + window.location.pathname;
         const fullUrl = baseUrl + `#/process-groups/${tableItem.id}`;
         window.open(fullUrl, '_blank');
+    }
+
+    createMessage(type: string, message: string): void {
+        this.message.create(type, `${message}`);
+    }
+
+    handleError(error: HttpErrorResponse) {
+        this.createMessage('error', '删除失败');
+        return throwError(() => new Error('Something bad happened; please try again later.'));
+    }
+
+    handleDelete(tableItem: any) {
+        const groupId = tableItem.id;
+        // console.log('>>>>>>>table', tableItem);
+
+        this.http
+            .delete(`/nifi-api/process-groups/${groupId}`, {
+                params: {
+                    clientId: tableItem.revision?.clientId,
+                    version: 2,
+                    disconnectedNodeAcknowledged: false
+                }
+            })
+            .pipe(catchError((error: HttpErrorResponse) => this.handleError(error)))
+            .subscribe(() => {
+                this.createMessage('success', '删除成功');
+                this.getTableData(this.id);
+            });
     }
 }

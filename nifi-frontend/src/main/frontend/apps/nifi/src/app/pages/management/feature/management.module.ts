@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
+import { NzMessageModule } from 'ng-zorro-antd/message';
 import { SideMenuComponent } from './component/side-menu.component';
 
 import { registerLocaleData } from '@angular/common';
@@ -49,7 +50,8 @@ import { FlowDesignerModule } from '../../flow-designer/feature/flow-designer.mo
         NzMenuModule,
         SummaryModule,
         FlowConfigurationHistoryModule,
-        FlowDesignerModule
+        FlowDesignerModule,
+        NzMessageModule
     ]
 })
 export class ManagementModule {}

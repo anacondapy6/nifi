@@ -23,11 +23,12 @@
                             <th>停止节点</th>
                             <th>失效节点</th>
                             <th>备注</th>
+                            <th>操作</th>
                         </tr>
                     </thead>
                     <tbody>
                         @for (data of tableData; track data; let idx = $index, e = $even) {
-                            <tr class="cursor-pointer" (dblclick)="handleDoubleClick(data)">
+                            <tr class="cursor-pointer">
                                 <td>{{ data.status.name }}</td>
                                 <td>{{ data.permissions.canRead }}</td>
                                 <td>{{ data.permissions.canWrite }}</td>
@@ -36,6 +37,11 @@
                                 <td>{{ data.component.stoppedCount }}</td>
                                 <td>{{ data.component.invalidCount }}</td>
                                 <td>{{ data.component.comments }}</td>
+                                <td>
+                                    <a (click)="handleDoubleClick(data)">查看详情</a>
+                                    <nz-divider nzType="vertical"></nz-divider>
+                                    <a (click)="handleDelete(data)">删除</a>
+                                </td>
                             </tr>
                         }
                     </tbody>
