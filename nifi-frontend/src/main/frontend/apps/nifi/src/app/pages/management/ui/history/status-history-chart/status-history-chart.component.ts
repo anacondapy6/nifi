@@ -51,7 +51,9 @@ export class HomeStatusHistoryChart {
             this.brushSelection = null;
             this._selectedDescriptor = selected;
             if (selected) {
-                this.updateChart(selected);
+                setTimeout(() => {
+                    this.updateChart(selected);
+                }, 200);
             }
         }
     }
