@@ -71,25 +71,37 @@
                                                 }
                                             }
                                             <div class="flex flex-col">
-                                                <div>Start</div>
+                                                <div>开始时间</div>
                                                 <div class="accent-color font-medium">
                                                     {{ minDate }}
                                                 </div>
                                             </div>
                                             <div class="flex flex-col">
-                                                <div>End</div>
+                                                <div>结束时间</div>
                                                 <div class="accent-color font-medium">
                                                     {{ maxDate }}
                                                 </div>
                                             </div>
                                             <div class="flex flex-col">
-                                                <div class="font-bold">NiFi</div>
+                                                <div class="font-bold">内存使用</div>
                                                 <div class="detail-item">
-                                                    <div>Min / Max / Mean</div>
-                                                    <div class="accent-color font-medium">
-                                                        {{ clusterStats.min }} / {{ clusterStats.max }} /
-                                                        {{ clusterStats.mean }}
+                                                    <div class="flexbox-container">
+                                                        <div>最小:</div>
+                                                        <div class="accent-color font-medium">{{ clusterStats.min }}</div>
                                                     </div>
+                                                    <div class="flexbox-container">
+                                                        <div>最大:</div>
+                                                        <div class="accent-color font-medium">{{ clusterStats.max }}</div>
+                                                    </div>
+                                                    <div class="flexbox-container">
+                                                        <div>平均:</div>
+                                                        <div class="accent-color font-medium">{{ clusterStats.mean }}</div>
+                                                    </div>
+<!--                                                    <div>最小 / 最大 / 平均</div>-->
+<!--                                                    <div class="accent-color font-medium">-->
+<!--                                                        {{ clusterStats.min }} / {{ clusterStats.max }} /-->
+<!--                                                        {{ clusterStats.mean }}-->
+<!--                                                    </div>-->
                                                 </div>
                                                 <div class="legend-entry">
                                                     <mat-checkbox
@@ -103,7 +115,7 @@
                                                         [ngStyle]="{
                                                             color: getColor(nodeStats, NIFI_NODE_CONFIG.nifiInstanceId)
                                                         }"
-                                                        >NiFi</mat-label
+                                                        >当前节点</mat-label
                                                     >
                                                 </div>
                                             </div>
@@ -201,7 +213,7 @@
                                         class="fa fa-refresh"
                                         [class.fa-spin]="statusHistoryState.statusHome === 'loading'"></i>
                                 </button>
-                                <div>Last updated:</div>
+                                <div>上次刷新时间</div>
                                 <div class="accent-color font-medium">
                                     {{ statusHistoryState.loadedTimestamp }}
                                 </div>

@@ -3,6 +3,11 @@ import * as echarts from 'echarts';
 import { IHomeTableData, IPieData } from './index';
 import { EchartsService } from '../../service/echarts-cus.service';
 import { DataService } from '../../service/home-graph.service';
+import {Instance} from "../history";
+import {FieldDescriptor, StatusHomeHistoryRequest, StatusHomeHistoryState} from "../../../../state/home-history";
+import {selectStatusHomeHistoryState} from "../../../../state/home-history/home-history.selectors";
+import {Store} from "@ngrx/store";
+import {reloadStatusHomeHistory} from "../../../../state/home-history/home-history.actions";
 
 @Component({
     selector: 'app-home-graph',
@@ -51,7 +56,7 @@ export class HomeGraphComponent implements OnInit, AfterViewInit, AfterViewCheck
             { value: this.pieData.invalidCount || 0, name: '无效' },
             { value: this.pieData.disabledCount || 0, name: '禁用' },
             { value: this.pieData.activeRemotePortCount || 0, name: '可执行远程端口' },
-            { value: this.pieData.inactiveRemotePortCount || 0, name: '不可知性远程端口' }
+            { value: this.pieData.inactiveRemotePortCount || 0, name: '不可执行远程端口' }
         ];
     }
 
@@ -84,7 +89,7 @@ export class HomeGraphComponent implements OnInit, AfterViewInit, AfterViewCheck
                         { value: this.pieData.invalidCount || 0, name: '无效' },
                         { value: this.pieData.disabledCount || 0, name: '禁用' },
                         { value: this.pieData.activeRemotePortCount || 0, name: '可执行远程端口' },
-                        { value: this.pieData.inactiveRemotePortCount || 0, name: '不可知性远程端口' }
+                        { value: this.pieData.inactiveRemotePortCount || 0, name: '不可执行远程端口' }
                     ],
                     emphasis: {
                         itemStyle: {

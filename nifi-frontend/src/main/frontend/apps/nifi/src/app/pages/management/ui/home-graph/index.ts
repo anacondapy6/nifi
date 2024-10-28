@@ -12,5 +12,5 @@ export interface IPieData {
     invalidCount?: number; // 无效
     disabledCount?: number; // 禁用
     activeRemotePortCount?: number; // 可执行远程端口
-    inactiveRemotePortCount?: number; // 不可知性远程端口
+    inactiveRemotePortCount?: number; // 不可执行远程端口
 }

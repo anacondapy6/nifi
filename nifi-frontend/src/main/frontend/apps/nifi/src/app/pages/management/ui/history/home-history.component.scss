@@ -62,6 +62,15 @@
     }
 }
 
+.flexbox-container {
+    display: flex;
+    gap: 20px; /* 设置所有子元素之间的间距为20像素 */
+}
+.flexbox-item {
+    flex: 1; /* 或设置具体的宽度，如 width: 50% */
+    box-sizing: border-box;
+}
+
 :host ::ng-deep #home-status-history-chart-container,
 :host ::ng-deep #home-status-history-chart-control-container {
     overflow: hidden;

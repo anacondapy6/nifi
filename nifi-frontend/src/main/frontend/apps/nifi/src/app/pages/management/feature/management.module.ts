@@ -26,6 +26,7 @@ registerLocaleData(zh);
 import { SummaryModule } from '../../summary/feature/summary.module';
 import { FlowConfigurationHistoryModule } from '../../flow-configuration-history/feature/flow-configuration-history.module';
 import { FlowDesignerModule } from '../../flow-designer/feature/flow-designer.module';
+import {MatIconButton} from "@angular/material/button";
 
 @NgModule({
     declarations: [
@@ -51,7 +52,8 @@ import { FlowDesignerModule } from '../../flow-designer/feature/flow-designer.mo
         SummaryModule,
         FlowConfigurationHistoryModule,
         FlowDesignerModule,
-        NzMessageModule
+        NzMessageModule,
+        MatIconButton
     ]
 })
 export class ManagementModule {}
