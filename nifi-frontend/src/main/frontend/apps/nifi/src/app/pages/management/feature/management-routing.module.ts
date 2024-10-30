@@ -40,7 +40,8 @@ const routes: Routes = [
             },
             {
                 path: 'task',
-                loadChildren: () => import('../../summary/feature/summary.module').then((m) => m.SummaryModule)
+                //loadChildren: () => import('../../summary/feature/summary.module').then((m) => m.SummaryModule)
+                loadChildren: () => import('../ui/summary/feature/summary.module').then((m) => m.SummaryModule)
                 // component: TaskStatusComponent
             },
             {
