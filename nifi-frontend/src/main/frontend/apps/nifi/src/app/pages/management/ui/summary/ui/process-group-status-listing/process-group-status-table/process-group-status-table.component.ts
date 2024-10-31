@@ -61,7 +61,7 @@ export type SupportedColumns =
     styleUrls: ['./process-group-status-table.component.scss']
 })
 export class ProcessGroupStatusTable extends ComponentStatusTable<ProcessGroupStatusSnapshotEntity> {
-    filterableColumns: SummaryTableFilterColumn[] = [{ key: 'name', label: 'name' }];
+    filterableColumns: SummaryTableFilterColumn[] = [{ key: 'name', label: '名称' }];
 
     displayedColumns: string[] = [
         'name',

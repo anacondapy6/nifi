@@ -42,7 +42,7 @@
                             <!-- Name Column -->
                             <ng-container matColumnDef="name">
                                 <th mat-header-cell *matHeaderCellDef mat-sort-header>
-                                    <div class="overflow-ellipsis overflow-hidden whitespace-nowrap">Name</div>
+                                    <div class="overflow-ellipsis overflow-hidden whitespace-nowrap">名称</div>
                                 </th>
                                 <td mat-cell *matCellDef="let item" [title]="formatName(item)">
                                     {{ formatName(item) }}
@@ -51,7 +51,7 @@
 
                             <!-- Run Status column -->
                             <ng-container matColumnDef="runStatus">
-                                <th mat-header-cell *matHeaderCellDef mat-sort-header>Run Status</th>
+                                <th mat-header-cell *matHeaderCellDef mat-sort-header>运行状态</th>
                                 <td mat-cell *matCellDef="let item">
                                     <div
                                         class="inline-block overflow-hidden overflow-ellipsis whitespace-nowrap space-x-1.5 align-middle">
@@ -86,15 +86,15 @@
                                             [ngClass]="{
                                                 underline: multiSort.active === 'in' && multiSort.sortValueIndex === 0
                                             }"
-                                            >In</span
+                                            >输入</span
                                         >
                                         <span
                                             [ngClass]="{
                                                 underline: multiSort.active === 'in' && multiSort.sortValueIndex === 1
                                             }"
-                                            >(Size)</span
+                                            >(数据量)</span
                                         >
-                                        <span class="font-light">5 min</span>
+                                        <span class="font-light">5 分钟</span>
                                     </div>
                                 </th>
                                 <td mat-cell *matCellDef="let item" [title]="formatIn(item)">
@@ -115,15 +115,15 @@
                                             [ngClass]="{
                                                 underline: multiSort.active === 'out' && multiSort.sortValueIndex === 0
                                             }">
-                                            Out
+                                            输出
                                         </span>
                                         <span
                                             [ngClass]="{
                                                 underline: multiSort.active === 'out' && multiSort.sortValueIndex === 1
                                             }">
-                                            (Size)
+                                            (数据量)
                                         </span>
-                                        <span class="font-light">5 min</span>
+                                        <span class="font-light">5 分钟</span>
                                     </div>
                                 </th>
                                 <td mat-cell *matCellDef="let item" [title]="formatOut(item)">
@@ -179,7 +179,7 @@
             <button mat-icon-button color="primary" (click)="refresh.next()">
                 <i class="fa fa-refresh" [class.fa-spin]="summaryListingStatus === 'loading'"></i>
             </button>
-            <div>Last updated:</div>
+            <div>上次更新时间:</div>
             <div class="accent-color font-medium">{{ loadedTimestamp }}</div>
         </div>
         <div>

@@ -52,8 +52,8 @@ export type SupportedColumns = 'name' | 'uri' | 'transmitting' | 'sent' | 'recei
 })
 export class RemoteProcessGroupStatusTable extends ComponentStatusTable<RemoteProcessGroupStatusSnapshotEntity> {
     filterableColumns: SummaryTableFilterColumn[] = [
-        { key: 'name', label: 'name' },
-        { key: 'targetUri', label: 'uri' }
+        { key: 'name', label: '名称' },
+        { key: 'targetUri', label: '目标地址' }
     ];
     displayedColumns: string[] = ['name', 'uri', 'transmitting', 'sent', 'received', 'actions'];
 

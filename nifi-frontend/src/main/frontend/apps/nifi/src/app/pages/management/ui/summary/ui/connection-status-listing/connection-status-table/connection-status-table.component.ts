@@ -52,9 +52,9 @@ export type SupportedColumns = 'name' | 'queue' | 'in' | 'out' | 'threshold' | '
 })
 export class ConnectionStatusTable extends ComponentStatusTable<ConnectionStatusSnapshotEntity> {
     filterableColumns: SummaryTableFilterColumn[] = [
-        { key: 'sourceName', label: 'source' },
-        { key: 'name', label: 'name' },
-        { key: 'destinationName', label: 'destination' }
+        { key: 'sourceName', label: '数据源' },
+        { key: 'name', label: '名称' },
+        { key: 'destinationName', label: '数据目标' }
     ];
 
     displayedColumns: string[] = [

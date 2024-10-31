@@ -53,7 +53,7 @@ export type SupportedColumns = 'name' | 'runStatus' | 'in' | 'out';
 export class PortStatusTable extends ComponentStatusTable<PortStatusSnapshotEntity> {
     private _portType!: 'input' | 'output';
 
-    filterableColumns: SummaryTableFilterColumn[] = [{ key: 'name', label: 'name' }];
+    filterableColumns: SummaryTableFilterColumn[] = [{ key: 'name', label: '名称' }];
 
     displayedColumns: string[] = [];
 
