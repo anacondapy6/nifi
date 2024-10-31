@@ -51,7 +51,7 @@ const routes: Routes = [
             {
                 path: 'log',
                 loadChildren: () =>
-                    import('../../flow-configuration-history/feature/flow-configuration-history.module').then(
+                    import('../ui/flow-configuration-history/feature/flow-configuration-history.module').then(
                         (m) => m.FlowConfigurationHistoryModule
                     )
                 // component: RunLogComponent
