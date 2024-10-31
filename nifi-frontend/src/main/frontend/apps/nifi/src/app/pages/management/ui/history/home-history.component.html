@@ -205,25 +205,25 @@
                 </form>
             </div>
 
-            <div>
-                <div class="flex w-full">
-                    <div class="flex-1">
-                        @if (instances.length > 0 && fieldDescriptors.length > 0) {
-                            <div class="text-sm flex items-center gap-x-2">
-                                <button mat-icon-button color="primary" (click)="refresh()">
-                                    <i
-                                        class="fa fa-refresh"
-                                        [class.fa-spin]="statusHistoryState.statusHome === 'loading'"></i>
-                                </button>
-                                <div>上次刷新时间</div>
-                                <div class="accent-color font-medium">
-                                    {{ statusHistoryState.loadedTimestamp }}
-                                </div>
-                            </div>
-                        }
-                    </div>
-                </div>
-            </div>
+<!--            <div>-->
+<!--                <div class="flex w-full">-->
+<!--                    <div class="flex-1">-->
+<!--                        @if (instances.length > 0 && fieldDescriptors.length > 0) {-->
+<!--                            <div class="text-sm flex items-center gap-x-2">-->
+<!--                                <button mat-icon-button color="primary" (click)="refresh()">-->
+<!--                                    <i-->
+<!--                                        class="fa fa-refresh"-->
+<!--                                        [class.fa-spin]="statusHistoryState.statusHome === 'loading'"></i>-->
+<!--                                </button>-->
+<!--                                <div>上次更新时间:</div>-->
+<!--                                <div class="accent-color font-medium">-->
+<!--                                    {{ statusHistoryState.loadedTimestamp }}-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        }-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     }
 </div>
