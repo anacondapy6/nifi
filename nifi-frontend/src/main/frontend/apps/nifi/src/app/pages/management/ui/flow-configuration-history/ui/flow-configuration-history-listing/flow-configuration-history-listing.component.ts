@@ -96,7 +96,7 @@ export class FlowConfigurationHistoryListing implements OnInit, OnDestroy {
     filterForm: FormGroup;
     filterableColumns: FilterableColumn[] = [
         { key: 'sourceId', label: 'id' },
-        { key: 'userIdentity', label: 'user' }
+        { key: 'userIdentity', label: '用户' }
     ];
 
     constructor(
