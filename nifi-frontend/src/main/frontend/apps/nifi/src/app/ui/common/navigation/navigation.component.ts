@@ -146,7 +146,9 @@ export class Navigation implements OnInit, OnDestroy {
 
     getCanvasLink(): string {
         const canvasRoute = this.storage.getItem<string>('current-canvas-route');
-        return canvasRoute || '/';
+        //console.log("回到页码", canvasRoute)
+        //return canvasRoute || '/';
+        return '/management/home';
     }
 
     toggleTheme(theme: string) {
