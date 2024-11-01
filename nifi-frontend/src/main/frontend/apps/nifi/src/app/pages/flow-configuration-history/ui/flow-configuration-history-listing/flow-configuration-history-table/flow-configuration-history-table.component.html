@@ -27,7 +27,7 @@
             [matSortDirection]="initialSortDirection">
             <!-- Date/Time Column -->
             <ng-container matColumnDef="timestamp">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                <th *matHeaderCellDef mat-sort-header>
                     <div class="overflow-ellipsis overflow-hidden whitespace-nowrap">Date/Time</div>
                 </th>
                 <td mat-cell *matCellDef="let item" [title]="formatTimestamp(item)">

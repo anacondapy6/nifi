@@ -21,7 +21,7 @@
     class="flex flex-col status-history-container">
     @if (statusHistoryState$ | async; as statusHistoryState) {
         <div class="flex justify-between">
-            <h2>历史状态</h2>
+            <h2 class="primary-color">历史状态</h2>
             <!-- @if (instances.length > 0 && fieldDescriptors.length > 0) {
                 @if (!dialogMaximized) {
                     <button
@@ -70,7 +70,7 @@
                                                     </div>
                                                 }
                                             }
-                                            <br>
+                                            <br />
                                             <div class="flex flex-col">
                                                 <div>开始时间</div>
                                                 <div class="accent-color font-medium">
@@ -88,23 +88,29 @@
                                                 <div class="detail-item">
                                                     <div class="flexbox-container">
                                                         <div>最小:</div>
-                                                        <div class="accent-color font-medium">{{ clusterStats.min }}</div>
+                                                        <div class="accent-color font-medium">
+                                                            {{ clusterStats.min }}
+                                                        </div>
                                                     </div>
                                                     <div class="flexbox-container">
                                                         <div>最大:</div>
-                                                        <div class="accent-color font-medium">{{ clusterStats.max }}</div>
+                                                        <div class="accent-color font-medium">
+                                                            {{ clusterStats.max }}
+                                                        </div>
                                                     </div>
                                                     <div class="flexbox-container">
                                                         <div>平均:</div>
-                                                        <div class="accent-color font-medium">{{ clusterStats.mean }}</div>
+                                                        <div class="accent-color font-medium">
+                                                            {{ clusterStats.mean }}
+                                                        </div>
                                                     </div>
-<!--                                                    <div>最小 / 最大 / 平均</div>-->
-<!--                                                    <div class="accent-color font-medium">-->
-<!--                                                        {{ clusterStats.min }} / {{ clusterStats.max }} /-->
-<!--                                                        {{ clusterStats.mean }}-->
-<!--                                                    </div>-->
+                                                    <!--                                                    <div>最小 / 最大 / 平均</div>-->
+                                                    <!--                                                    <div class="accent-color font-medium">-->
+                                                    <!--                                                        {{ clusterStats.min }} / {{ clusterStats.max }} /-->
+                                                    <!--                                                        {{ clusterStats.mean }}-->
+                                                    <!--                                                    </div>-->
                                                 </div>
-                                                <br>
+                                                <br />
                                                 <div class="legend-entry">
                                                     <mat-checkbox
                                                         color="primary"
@@ -205,25 +211,25 @@
                 </form>
             </div>
 
-<!--            <div>-->
-<!--                <div class="flex w-full">-->
-<!--                    <div class="flex-1">-->
-<!--                        @if (instances.length > 0 && fieldDescriptors.length > 0) {-->
-<!--                            <div class="text-sm flex items-center gap-x-2">-->
-<!--                                <button mat-icon-button color="primary" (click)="refresh()">-->
-<!--                                    <i-->
-<!--                                        class="fa fa-refresh"-->
-<!--                                        [class.fa-spin]="statusHistoryState.statusHome === 'loading'"></i>-->
-<!--                                </button>-->
-<!--                                <div>上次更新时间:</div>-->
-<!--                                <div class="accent-color font-medium">-->
-<!--                                    {{ statusHistoryState.loadedTimestamp }}-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        }-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+            <!--            <div>-->
+            <!--                <div class="flex w-full">-->
+            <!--                    <div class="flex-1">-->
+            <!--                        @if (instances.length > 0 && fieldDescriptors.length > 0) {-->
+            <!--                            <div class="text-sm flex items-center gap-x-2">-->
+            <!--                                <button mat-icon-button color="primary" (click)="refresh()">-->
+            <!--                                    <i-->
+            <!--                                        class="fa fa-refresh"-->
+            <!--                                        [class.fa-spin]="statusHistoryState.statusHome === 'loading'"></i>-->
+            <!--                                </button>-->
+            <!--                                <div>上次更新时间:</div>-->
+            <!--                                <div class="accent-color font-medium">-->
+            <!--                                    {{ statusHistoryState.loadedTimestamp }}-->
+            <!--                                </div>-->
+            <!--                            </div>-->
+            <!--                        }-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
         </div>
     }
 </div>

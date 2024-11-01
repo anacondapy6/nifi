@@ -1,52 +1,111 @@
 <div class="h-full px-5 flex flex-col">
     <app-common-create-project (notify)="handleNotification($event)"></app-common-create-project>
-    <div class="flex-1 mt-4">
-        <div class="bg-white rounded-lg">
-            <div class="py-4 px-4">项目列表</div>
-            <nz-divider class="m-0"></nz-divider>
-            <div class="p-4">
-                <!-- [nzFrontPagination]="false"
-                    [nzShowQuickJumper]="true"
-                    [nzLoading]="loading"
-                    [nzTotal]="total"
-                    [nzPageSize]="pageSize"
-                    [nzPageIndex]="pageIndex"
-                    (nzQueryParams)="onQueryParamsChange($event)" -->
-                <nz-table #basicTable nzShowSizeChanger [nzData]="tableData" [nzShowQuickJumper]="true">
-                    <thead>
-                        <tr>
-                            <th>名称</th>
-                            <th>可读</th>
-                            <th>可写</th>
-                            <th>执行引擎</th>
-                            <th>运行节点</th>
-                            <th>停止节点</th>
-                            <th>失效节点</th>
-                            <th>备注</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for (data of tableData; track data; let idx = $index, e = $even) {
-                            <tr class="cursor-pointer">
-                                <td>{{ data.status.name }}</td>
-                                <td>{{ data.permissions.canRead }}</td>
-                                <td>{{ data.permissions.canWrite }}</td>
-                                <td>{{ data.component.executionEngine }}</td>
-                                <td>{{ data.component.runningCount }}</td>
-                                <td>{{ data.component.stoppedCount }}</td>
-                                <td>{{ data.component.invalidCount }}</td>
-                                <td>{{ data.component.comments }}</td>
-                                <td>
-                                    <a (click)="handleDoubleClick(data)">查看详情</a>
-                                    <nz-divider nzType="vertical"></nz-divider>
-                                    <a (click)="handleDelete(data)">删除</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </nz-table>
-            </div>
+    <h4 class="py-2 primary-color">项目列表</h4>
+    <div class="flow-configuration-history-table flex-1 relative h-full w-full">
+        <div class="listing-table overflow-y-auto absolute inset-0">
+            <table class="flex-1" mat-table [dataSource]="tableData">
+                <!-- Date/Time Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <div class="overflow-ellipsis overflow-hidden whitespace-nowrap">名称</div>
+                    </th>
+                    <td mat-cell *matCellDef="let item">{{ item.status.name }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="canRead">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <div class="overflow-ellipsis overflow-hidden whitespace-nowrap">可读</div>
+                    </th>
+                    <td mat-cell *matCellDef="let item">{{ item.permissions.canRead }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="canWrite">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <div class="overflow-ellipsis overflow-hidden whitespace-nowrap">可写</div>
+                    </th>
+                    <td mat-cell *matCellDef="let item">{{ item.permissions.canWrite }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="executionEngine">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <div class="overflow-ellipsis overflow-hidden whitespace-nowrap">执行引擎</div>
+                    </th>
+                    <td mat-cell *matCellDef="let item">{{ item.component.executionEngine }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="runningCount">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <div class="overflow-ellipsis overflow-hidden whitespace-nowrap">运行节点</div>
+                    </th>
+                    <td mat-cell *matCellDef="let item">{{ item.component.runningCount }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="stoppedCount">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <div class="overflow-ellipsis overflow-hidden whitespace-nowrap">停止节点</div>
+                    </th>
+                    <td mat-cell *matCellDef="let item">{{ item.component.stoppedCount }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="invalidCount">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <div class="overflow-ellipsis overflow-hidden whitespace-nowrap">失效节点</div>
+                    </th>
+                    <td mat-cell *matCellDef="let item">{{ item.component.invalidCount }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="comments">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+                        <div class="overflow-ellipsis overflow-hidden whitespace-nowrap">备注</div>
+                    </th>
+                    <td mat-cell *matCellDef="let item">{{ item.component.comments }}</td>
+                </ng-container>
+
+                <!-- Actions Column -->
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let item">
+                        <div class="flex items-center justify-end gap-x-2">
+                            <button
+                                mat-icon-button
+                                type="button"
+                                [matMenuTriggerFor]="actionMenu"
+                                class="h-16 w-16 flex items-center justify-center icon global-menu">
+                                <i class="fa fa-ellipsis-v"></i>
+                            </button>
+                            <mat-menu #actionMenu="matMenu" xPosition="before">
+                                <button mat-menu-item (click)="handleDoubleClick(item)">
+                                    <i class="fa fa-info-circle primary-color mr-2"></i>
+                                    查看详情
+                                </button>
+                                <button mat-menu-item (click)="openConfirmDialog(item)">
+                                    <i class="fa fa-trash primary-color mr-2"></i>
+                                    删除
+                                </button>
+                            </mat-menu>
+                        </div>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr
+                    mat-row
+                    *matRowDef="let row; let even = even; columns: displayedColumns"
+                    [class.even]="even"
+                    (click)="select(row)"
+                    [class.surface-color]="!canRead(row)"
+                    [class.selected]="isSelected(row)"></tr>
+            </table>
         </div>
+    </div>
+
+    <div class="flex flex-row-reverse">
+        <mat-paginator
+            [length]="tableData.length"
+            [pageSize]="pageSize"
+            [pageIndex]="pageIndex"
+            [hidePageSize]="true"
+            [showFirstLastButtons]="true"
+            (page)="paginationChanged($event)"></mat-paginator>
     </div>
 </div>

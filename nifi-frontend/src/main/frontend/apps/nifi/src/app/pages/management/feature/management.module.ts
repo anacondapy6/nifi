@@ -17,7 +17,7 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { SideMenuComponent } from './component/side-menu.component';
-
+import { ConfirmDialogComponent } from '../ui/project-management/component/confirm-dialog.component';
 import { registerLocaleData } from '@angular/common';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import zh from '@angular/common/locales/zh';
@@ -26,7 +26,12 @@ registerLocaleData(zh);
 import { SummaryModule } from '../../summary/feature/summary.module';
 import { FlowConfigurationHistoryModule } from '../../flow-configuration-history/feature/flow-configuration-history.module';
 import { FlowDesignerModule } from '../../flow-designer/feature/flow-designer.module';
-import {MatIconButton} from "@angular/material/button";
+import { MatIconButton } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
     declarations: [
@@ -34,7 +39,8 @@ import {MatIconButton} from "@angular/material/button";
         HomeComponent,
         HomeGraphComponent,
         SideMenuComponent,
-        ProjectManagementComponent
+        ProjectManagementComponent,
+        ConfirmDialogComponent
     ],
     imports: [
         CommonModule,
@@ -53,7 +59,12 @@ import {MatIconButton} from "@angular/material/button";
         FlowConfigurationHistoryModule,
         FlowDesignerModule,
         NzMessageModule,
-        MatIconButton
+        MatIconButton,
+        MatTableModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatPaginatorModule,
+        MatDialogModule
     ]
 })
 export class ManagementModule {}

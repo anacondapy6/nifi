@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './component/confirm-dialog.component';
 
 @Component({
     selector: 'app-project-management',
@@ -15,18 +17,33 @@ import { Observable, throwError } from 'rxjs';
     styleUrls: ['./project-management.component.scss']
 })
 export class ProjectManagementComponent implements OnInit {
+    selectedHistoryActionId: number | null = null;
     tableData: any[] = [];
-    pageSize: number = 10;
-    pageIndex: number = 1;
+    allTableData: any[] = [];
+    pageSize: number = 50;
+    pageIndex: number = 0;
     loading: boolean = true;
-    total: number = 30;
+    total: number = 0;
     id: string = '';
+
+    displayedColumns: string[] = [
+        'name',
+        'canRead',
+        'canWrite',
+        'executionEngine',
+        'runningCount',
+        'stoppedCount',
+        'invalidCount',
+        'comments',
+        'actions'
+    ];
 
     constructor(
         private dataService: DataService,
         private http: HttpClient,
         private router: Router,
-        private message: NzMessageService
+        private message: NzMessageService,
+        private dialog: MatDialog
     ) {}
 
     getParamsId() {
@@ -55,9 +72,16 @@ export class ProjectManagementComponent implements OnInit {
                 }
             })
             .subscribe((response: any) => {
-                this.tableData = response?.processGroupFlow?.flow?.processGroups || [];
+                this.allTableData = response?.processGroupFlow?.flow?.processGroups || [];
+                this.tableData = this.allTableData.slice(this.getStartAndEnd().start, this.getStartAndEnd().end);
                 // console.log('>>>>>>>>>>>>tableData', this.tableData);
             });
+    }
+
+    getStartAndEnd() {
+        const start = this.pageIndex * this.pageSize;
+        const end = start + this.pageSize + 1;
+        return { start, end };
     }
 
     onQueryParamsChange(params: NzTableQueryParams): void {
@@ -110,5 +134,39 @@ export class ProjectManagementComponent implements OnInit {
                 this.createMessage('success', '删除成功');
                 this.getTableData(this.id);
             });
+    }
+
+    select(item: any) {
+        console.log('>>item', item);
+    }
+
+    canRead(item: any): boolean {
+        return item.canRead;
+    }
+
+    isSelected(item: any): boolean {
+        if (this.selectedHistoryActionId) {
+            return item.id === this.selectedHistoryActionId;
+        }
+        return false;
+    }
+
+    paginationChanged(item: any) {
+        this.pageIndex = item.pageIndex;
+        this.tableData = this.allTableData.slice(this.getStartAndEnd().start, this.getStartAndEnd().end);
+    }
+
+    openConfirmDialog(row: any): void {
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+            data: {
+                ...row
+            }
+        });
+
+        dialogRef.afterClosed().subscribe((result) => {
+            if (result) {
+                this.handleDelete(row);
+            }
+        });
     }
 }
