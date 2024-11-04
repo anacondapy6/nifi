@@ -32,6 +32,7 @@ import { QueueEffects } from '../state/queue/queue.effects';
 import { BannerText } from '../../../ui/common/banner-text/banner-text.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { CommonCreateProjectComponent } from '../ui/canvas/header/common-create-project/common-create-project.component';
+import {MatButton} from "@angular/material/button";
 
 @NgModule({
     declarations: [FlowDesigner, VersionControlTip, CommonCreateProjectComponent],
@@ -50,7 +51,8 @@ import { CommonCreateProjectComponent } from '../ui/canvas/header/common-create-
         NgOptimizedImage,
         MatDialogModule,
         BannerText,
-        NzButtonModule
+        NzButtonModule,
+        MatButton
     ]
 })
 export class FlowDesignerModule {}
