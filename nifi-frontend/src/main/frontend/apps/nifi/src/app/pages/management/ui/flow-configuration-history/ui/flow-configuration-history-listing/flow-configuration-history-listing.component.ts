@@ -55,7 +55,7 @@ interface FilterableColumn {
 }
 
 @Component({
-    selector: 'flow-configuration-history-listing',
+    selector: 'management-flow-configuration-history-listing',
     standalone: true,
     imports: [
         CommonModule,

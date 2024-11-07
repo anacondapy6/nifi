@@ -32,7 +32,7 @@ import { Store } from '@ngrx/store';
 import { CloseOnEscapeDialog } from '../../../../../../../ui/common/close-on-escape-dialog/close-on-escape-dialog.component';
 
 @Component({
-    selector: 'purge-history',
+    selector: 'management-purge-history',
     standalone: true,
     imports: [CommonModule, MatDialogModule, MatButtonModule, ReactiveFormsModule, MatInputModule, MatDatepickerModule],
     templateUrl: './purge-history.component.html',

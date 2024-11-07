@@ -33,7 +33,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CloseOnEscapeDialog } from '../../../../../../../ui/common/close-on-escape-dialog/close-on-escape-dialog.component';
 
 @Component({
-    selector: 'action-details',
+    selector: 'management-action-details',
     standalone: true,
     imports: [CommonModule, MatDialogModule, PipesModule, MatButtonModule],
     templateUrl: './action-details.component.html',
