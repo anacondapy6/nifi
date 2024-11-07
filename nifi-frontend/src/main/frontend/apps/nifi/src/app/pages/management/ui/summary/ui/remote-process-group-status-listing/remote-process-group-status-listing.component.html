@@ -21,7 +21,7 @@
             <ngx-skeleton-loader count="3"></ngx-skeleton-loader>
         </div>
     } @else {
-        <remote-process-group-status-table
+        <management-remote-process-group-status-table
             [components]="(rpgStatusSnapshots$ | async)!"
             [selectedId]="selectedRpgId$ | async"
             [loadedTimestamp]="loadedTimestamp$ | async"
@@ -36,6 +36,6 @@
             (clusterNodeSelected)="clusterNodeSelected($event)"
             (viewClusteredDetails)="viewClusteredDetails($event)"
             initialSortColumn="name"
-            initialSortDirection="asc"></remote-process-group-status-table>
+            initialSortDirection="asc"></management-remote-process-group-status-table>
     }
 </ng-container>

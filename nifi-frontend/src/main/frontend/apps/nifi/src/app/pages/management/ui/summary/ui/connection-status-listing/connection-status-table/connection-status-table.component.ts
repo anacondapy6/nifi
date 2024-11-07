@@ -33,7 +33,7 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 export type SupportedColumns = 'name' | 'queue' | 'in' | 'out' | 'threshold' | 'sourceName' | 'destinationName';
 
 @Component({
-    selector: 'connection-status-table',
+    selector: 'management-connection-status-table',
     standalone: true,
     imports: [
         CommonModule,

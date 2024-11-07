@@ -40,7 +40,7 @@ export interface SummaryTableFilterContext extends SummaryTableFilterArgs {
 }
 
 @Component({
-    selector: 'summary-table-filter',
+    selector: 'management-summary-table-filter',
     templateUrl: './summary-table-filter.component.html',
     styleUrls: ['./summary-table-filter.component.scss']
 })

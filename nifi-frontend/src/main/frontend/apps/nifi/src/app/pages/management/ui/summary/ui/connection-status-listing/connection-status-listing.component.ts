@@ -44,7 +44,7 @@ import * as ClusterStatusActions from '../../state/component-cluster-status/comp
 import { NodeSearchResult } from '../../../../../../state/cluster-summary';
 
 @Component({
-    selector: 'connection-status-listing',
+    selector: 'management-connection-status-listing',
     templateUrl: './connection-status-listing.component.html',
     styleUrls: ['./connection-status-listing.component.scss']
 })

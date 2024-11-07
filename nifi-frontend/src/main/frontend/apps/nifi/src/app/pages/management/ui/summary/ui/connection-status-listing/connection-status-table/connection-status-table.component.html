@@ -19,7 +19,7 @@
         <ng-container>
             <div class="connection-status-table h-full flex flex-col">
                 <!-- allow filtering of the table -->
-                <summary-table-filter
+                <management-summary-table-filter
                     [filteredCount]="filteredCount"
                     [totalCount]="totalCount"
                     [filterableColumns]="filterableColumns"
@@ -28,7 +28,7 @@
                     filterColumn="sourceName"
                     [clusterNodes]="clusterNodes"
                     [selectedNode]="selectedClusterNode"
-                    (filterChanged)="applyFilter($event)"></summary-table-filter>
+                    (filterChanged)="applyFilter($event)"></management-summary-table-filter>
 
                 <div class="flex-1 relative">
                     <div class="listing-table overflow-y-auto absolute inset-0">

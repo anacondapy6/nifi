@@ -40,7 +40,7 @@ import { NodeSearchResult } from '../../../../../../state/cluster-summary';
 import * as ClusterStatusActions from '../../state/component-cluster-status/component-cluster-status.actions';
 
 @Component({
-    selector: 'input-port-status-listing',
+    selector: 'management-input-port-status-listing',
     templateUrl: './input-port-status-listing.component.html',
     styleUrls: ['./input-port-status-listing.component.scss']
 })

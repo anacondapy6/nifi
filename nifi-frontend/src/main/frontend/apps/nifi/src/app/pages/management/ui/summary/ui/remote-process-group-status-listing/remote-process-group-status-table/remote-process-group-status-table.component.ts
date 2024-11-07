@@ -33,7 +33,7 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 export type SupportedColumns = 'name' | 'uri' | 'transmitting' | 'sent' | 'received';
 
 @Component({
-    selector: 'remote-process-group-status-table',
+    selector: 'management-remote-process-group-status-table',
     standalone: true,
     imports: [
         CommonModule,

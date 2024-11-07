@@ -45,7 +45,7 @@ import {
 } from '../../../../../../state/cluster-summary/cluster-summary.selectors';
 
 @Component({
-    selector: 'process-group-status-listing',
+    selector: 'management-process-group-status-listing',
     templateUrl: './process-group-status-listing.component.html',
     styleUrls: ['./process-group-status-listing.component.scss']
 })

@@ -23,7 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { NgClass } from '@angular/common';
 
 @Component({
-    selector: 'connection-cluster-table',
+    selector: 'management-connection-cluster-table',
     standalone: true,
     imports: [MatTableModule, MatSortModule, NgClass],
     templateUrl: './connection-cluster-table.component.html',

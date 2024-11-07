@@ -21,7 +21,7 @@
             <ngx-skeleton-loader count="3"></ngx-skeleton-loader>
         </div>
     } @else {
-        <port-status-table
+        <management-port-status-table
             [components]="(portStatusSnapshots$ | async)!"
             [selectedId]="selectedPortId$ | async"
             [loadedTimestamp]="loadedTimestamp$ | async"
@@ -36,6 +36,6 @@
             (clusterNodeSelected)="clusterNodeSelected($event)"
             (viewClusteredDetails)="viewClusteredDetails($event)"
             initialSortColumn="name"
-            initialSortDirection="asc"></port-status-table>
+            initialSortDirection="asc"></management-port-status-table>
     }
 </ng-container>

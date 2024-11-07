@@ -46,7 +46,7 @@ import { ProcessorStatusSnapshotEntity } from '../../state';
 import { NodeSearchResult } from '../../../../../../state/cluster-summary';
 
 @Component({
-    selector: 'processor-status-listing',
+    selector: 'management-processor-status-listing',
     templateUrl: './processor-status-listing.component.html',
     styleUrls: ['./processor-status-listing.component.scss']
 })

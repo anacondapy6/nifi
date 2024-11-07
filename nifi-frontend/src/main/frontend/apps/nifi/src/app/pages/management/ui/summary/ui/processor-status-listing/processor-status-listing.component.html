@@ -20,7 +20,7 @@
             <ngx-skeleton-loader count="3"></ngx-skeleton-loader>
         </div>
     } @else {
-        <processor-status-table
+        <management-processor-status-table
             [components]="(processorStatusSnapshots$ | async)!"
             [selectedId]="selectedProcessorId$ | async"
             [loadedTimestamp]="loadedTimestamp$ | async"
@@ -35,6 +35,6 @@
             (clusterNodeSelected)="clusterNodeSelected($event)"
             (viewClusteredDetails)="viewClusteredDetails($event)"
             initialSortColumn="name"
-            initialSortDirection="asc"></processor-status-table>
+            initialSortDirection="asc"></management-processor-status-table>
     }
 </ng-container>

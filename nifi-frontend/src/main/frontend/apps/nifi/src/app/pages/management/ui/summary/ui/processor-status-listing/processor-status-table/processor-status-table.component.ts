@@ -33,7 +33,7 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 export type SupportedColumns = 'name' | 'type' | 'processGroup' | 'runStatus' | 'in' | 'out' | 'readWrite' | 'tasks';
 
 @Component({
-    selector: 'processor-status-table',
+    selector: 'management-processor-status-table',
     templateUrl: './processor-status-table.component.html',
     styleUrls: ['./processor-status-table.component.scss'],
     standalone: true,

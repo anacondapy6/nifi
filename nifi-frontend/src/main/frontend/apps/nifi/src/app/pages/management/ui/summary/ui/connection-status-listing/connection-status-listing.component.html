@@ -21,7 +21,7 @@
             <ngx-skeleton-loader count="3"></ngx-skeleton-loader>
         </div>
     } @else {
-        <connection-status-table
+        <management-connection-status-table
             [components]="(connectionStatusSnapshots$ | async)!"
             [selectedId]="selectedConnectionId$ | async"
             [loadedTimestamp]="loadedTimestamp$ | async"
@@ -36,6 +36,6 @@
             (clusterNodeSelected)="clusterNodeSelected($event)"
             (viewClusteredDetails)="viewClusteredDetails($event)"
             initialSortColumn="sourceName"
-            initialSortDirection="asc"></connection-status-table>
+            initialSortDirection="asc"></management-connection-status-table>
     }
 </ng-container>

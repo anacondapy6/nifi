@@ -23,7 +23,7 @@ import { MatTableModule } from '@angular/material/table';
 import { NgClass } from '@angular/common';
 
 @Component({
-    selector: 'port-cluster-table',
+    selector: 'management-port-cluster-table',
     standalone: true,
     imports: [MatSortModule, MatTableModule, NgClass],
     templateUrl: './port-cluster-table.component.html',

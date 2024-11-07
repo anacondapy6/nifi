@@ -44,7 +44,7 @@ import * as ClusterStatusActions from '../../state/component-cluster-status/comp
 import { NodeSearchResult } from '../../../../../../state/cluster-summary';
 
 @Component({
-    selector: 'remote-process-group-status-listing',
+    selector: 'management-remote-process-group-status-listing',
     templateUrl: './remote-process-group-status-listing.component.html',
     styleUrls: ['./remote-process-group-status-listing.component.scss']
 })

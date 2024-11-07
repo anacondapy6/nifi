@@ -43,7 +43,7 @@ export type SupportedColumns =
     | 'tasks';
 
 @Component({
-    selector: 'process-group-status-table',
+    selector: 'management-process-group-status-table',
     standalone: true,
     imports: [
         CommonModule,

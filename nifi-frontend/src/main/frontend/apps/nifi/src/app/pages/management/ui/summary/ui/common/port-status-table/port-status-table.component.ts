@@ -33,7 +33,7 @@ import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 export type SupportedColumns = 'name' | 'runStatus' | 'in' | 'out';
 
 @Component({
-    selector: 'port-status-table',
+    selector: 'management-port-status-table',
     standalone: true,
     imports: [
         CommonModule,

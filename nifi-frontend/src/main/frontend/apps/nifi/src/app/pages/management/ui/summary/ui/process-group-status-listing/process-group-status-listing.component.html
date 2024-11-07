@@ -21,7 +21,7 @@
             <ngx-skeleton-loader count="3"></ngx-skeleton-loader>
         </div>
     } @else {
-        <process-group-status-table
+        <management-process-group-status-table
             [components]="(processGroupStatusSnapshots$ | async)!"
             [selectedId]="selectedProcessGroupId$ | async"
             [rootProcessGroup]="(processGroupStatus$ | async)?.processGroupStatus?.aggregateSnapshot!"
@@ -37,6 +37,6 @@
             (clusterNodeSelected)="clusterNodeSelected($event)"
             (viewClusteredDetails)="viewClusteredDetails($event)"
             initialSortColumn="name"
-            initialSortDirection="asc"></process-group-status-table>
+            initialSortDirection="asc"></management-process-group-status-table>
     }
 </ng-container>
