@@ -253,6 +253,11 @@ export const openNewProcessGroupDialog = createAction(
     props<{ request: CreateProcessGroupDialogRequest }>()
 );
 
+export const openManagementProcessGroupDialog = createAction(
+    `${CANVAS_PREFIX} Open New Management Process Group Dialog`,
+    props<{ request: CreateProcessGroupDialogRequest }>()
+);
+
 export const openNewRemoteProcessGroupDialog = createAction(
     `${CANVAS_PREFIX} Open New Remote Process Group Dialog`,
     props<{ request: CreateComponentRequest }>()

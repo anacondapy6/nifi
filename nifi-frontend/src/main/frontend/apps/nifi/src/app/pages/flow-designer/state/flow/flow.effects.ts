@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-import { Injectable } from '@angular/core';
-import { FlowService } from '../../service/flow.service';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { concatLatestFrom } from '@ngrx/operators';
+import {Injectable} from '@angular/core';
+import {FlowService} from '../../service/flow.service';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
+import {concatLatestFrom} from '@ngrx/operators';
 import * as FlowActions from './flow.actions';
 import * as StatusHistoryActions from '../../../../state/status-history/status-history.actions';
 import * as ErrorActions from '../../../../state/error/error.actions';
@@ -63,7 +63,7 @@ import {
     UpdateProcessorResponse,
     VersionControlInformationEntity
 } from './index';
-import { Action, Store } from '@ngrx/store';
+import {Action, Store} from '@ngrx/store';
 import {
     selectAnySelectedComponentIds,
     selectChangeVersionRequest,
@@ -82,10 +82,10 @@ import {
     selectSaving,
     selectVersionSaving
 } from './flow.selectors';
-import { ConnectionManager } from '../../service/manager/connection-manager.service';
-import { MatDialog } from '@angular/material/dialog';
-import { CreatePort } from '../../ui/canvas/items/port/create-port/create-port.component';
-import { EditPort } from '../../ui/canvas/items/port/edit-port/edit-port.component';
+import {ConnectionManager} from '../../service/manager/connection-manager.service';
+import {MatDialog} from '@angular/material/dialog';
+import {CreatePort} from '../../ui/canvas/items/port/create-port/create-port.component';
+import {EditPort} from '../../ui/canvas/items/port/edit-port/edit-port.component';
 import {
     BranchEntity,
     BucketEntity,
@@ -94,31 +94,37 @@ import {
     VersionedFlowEntity,
     VersionedFlowSnapshotMetadataEntity
 } from '../../../../state/shared';
-import { Router } from '@angular/router';
-import { Client } from '../../../../service/client.service';
-import { CanvasUtils } from '../../service/canvas-utils.service';
-import { CanvasView } from '../../service/canvas-view.service';
-import { selectProcessorTypes } from '../../../../state/extension-types/extension-types.selectors';
-import { NiFiState } from '../../../../state';
-import { CreateProcessor } from '../../ui/canvas/items/processor/create-processor/create-processor.component';
-import { EditProcessor } from '../../ui/canvas/items/processor/edit-processor/edit-processor.component';
-import { BirdseyeView } from '../../service/birdseye-view.service';
-import { CreateRemoteProcessGroup } from '../../ui/canvas/items/remote-process-group/create-remote-process-group/create-remote-process-group.component';
-import { CreateProcessGroup } from '../../ui/canvas/items/process-group/create-process-group/create-process-group.component';
-import { CreateConnection } from '../../ui/canvas/items/connection/create-connection/create-connection.component';
-import { EditConnectionComponent } from '../../ui/canvas/items/connection/edit-connection/edit-connection.component';
-import { OkDialog } from '../../../../ui/common/ok-dialog/ok-dialog.component';
-import { GroupComponents } from '../../ui/canvas/items/process-group/group-components/group-components.component';
-import { EditProcessGroup } from '../../ui/canvas/items/process-group/edit-process-group/edit-process-group.component';
-import { ControllerServiceService } from '../../service/controller-service.service';
-import { YesNoDialog } from '../../../../ui/common/yes-no-dialog/yes-no-dialog.component';
-import { PropertyTableHelperService } from '../../../../service/property-table-helper.service';
-import { ParameterHelperService } from '../../service/parameter-helper.service';
-import { RegistryService } from '../../service/registry.service';
-import { ImportFromRegistry } from '../../ui/canvas/items/flow/import-from-registry/import-from-registry.component';
-import { selectCurrentUser } from '../../../../state/current-user/current-user.selectors';
-import { NoRegistryClientsDialog } from '../../ui/common/no-registry-clients-dialog/no-registry-clients-dialog.component';
-import { EditRemoteProcessGroup } from '../../ui/canvas/items/remote-process-group/edit-remote-process-group/edit-remote-process-group.component';
+import {Router} from '@angular/router';
+import {Client} from '../../../../service/client.service';
+import {CanvasUtils} from '../../service/canvas-utils.service';
+import {CanvasView} from '../../service/canvas-view.service';
+import {selectProcessorTypes} from '../../../../state/extension-types/extension-types.selectors';
+import {NiFiState} from '../../../../state';
+import {CreateProcessor} from '../../ui/canvas/items/processor/create-processor/create-processor.component';
+import {EditProcessor} from '../../ui/canvas/items/processor/edit-processor/edit-processor.component';
+import {BirdseyeView} from '../../service/birdseye-view.service';
+import {
+    CreateRemoteProcessGroup
+} from '../../ui/canvas/items/remote-process-group/create-remote-process-group/create-remote-process-group.component';
+import {
+    CreateProcessGroup
+} from '../../ui/canvas/items/process-group/create-process-group/create-process-group.component';
+import {CreateConnection} from '../../ui/canvas/items/connection/create-connection/create-connection.component';
+import {EditConnectionComponent} from '../../ui/canvas/items/connection/edit-connection/edit-connection.component';
+import {OkDialog} from '../../../../ui/common/ok-dialog/ok-dialog.component';
+import {GroupComponents} from '../../ui/canvas/items/process-group/group-components/group-components.component';
+import {EditProcessGroup} from '../../ui/canvas/items/process-group/edit-process-group/edit-process-group.component';
+import {ControllerServiceService} from '../../service/controller-service.service';
+import {YesNoDialog} from '../../../../ui/common/yes-no-dialog/yes-no-dialog.component';
+import {PropertyTableHelperService} from '../../../../service/property-table-helper.service';
+import {ParameterHelperService} from '../../service/parameter-helper.service';
+import {RegistryService} from '../../service/registry.service';
+import {ImportFromRegistry} from '../../ui/canvas/items/flow/import-from-registry/import-from-registry.component';
+import {selectCurrentUser} from '../../../../state/current-user/current-user.selectors';
+import {NoRegistryClientsDialog} from '../../ui/common/no-registry-clients-dialog/no-registry-clients-dialog.component';
+import {
+    EditRemoteProcessGroup
+} from '../../ui/canvas/items/remote-process-group/edit-remote-process-group/edit-remote-process-group.component';
 import {
     ComponentType,
     isDefinedAndNotNull,
@@ -127,21 +133,25 @@ import {
     SMALL_DIALOG,
     XL_DIALOG
 } from 'libs/shared/src';
-import { HttpErrorResponse } from '@angular/common/http';
-import { SaveVersionDialog } from '../../ui/canvas/items/flow/save-version-dialog/save-version-dialog.component';
-import { ChangeVersionDialog } from '../../ui/canvas/items/flow/change-version-dialog/change-version-dialog';
-import { ChangeVersionProgressDialog } from '../../ui/canvas/items/flow/change-version-progress-dialog/change-version-progress-dialog';
-import { LocalChangesDialog } from '../../ui/canvas/items/flow/local-changes-dialog/local-changes-dialog';
-import { ClusterConnectionService } from '../../../../service/cluster-connection.service';
-import { ExtensionTypesService } from '../../../../service/extension-types.service';
-import { ChangeComponentVersionDialog } from '../../../../ui/common/change-component-version-dialog/change-component-version-dialog';
-import { SnippetService } from '../../service/snippet.service';
-import { selectTransform } from '../transform/transform.selectors';
-import { EditLabel } from '../../ui/canvas/items/label/edit-label/edit-label.component';
-import { ErrorHelper } from '../../../../service/error-helper.service';
-import { selectConnectedStateChanged } from '../../../../state/cluster-summary/cluster-summary.selectors';
-import { resetConnectedStateChanged } from '../../../../state/cluster-summary/cluster-summary.actions';
-import { ChangeColorDialog } from '../../ui/canvas/change-color-dialog/change-color-dialog.component';
+import {HttpErrorResponse} from '@angular/common/http';
+import {SaveVersionDialog} from '../../ui/canvas/items/flow/save-version-dialog/save-version-dialog.component';
+import {ChangeVersionDialog} from '../../ui/canvas/items/flow/change-version-dialog/change-version-dialog';
+import {
+    ChangeVersionProgressDialog
+} from '../../ui/canvas/items/flow/change-version-progress-dialog/change-version-progress-dialog';
+import {LocalChangesDialog} from '../../ui/canvas/items/flow/local-changes-dialog/local-changes-dialog';
+import {ClusterConnectionService} from '../../../../service/cluster-connection.service';
+import {ExtensionTypesService} from '../../../../service/extension-types.service';
+import {
+    ChangeComponentVersionDialog
+} from '../../../../ui/common/change-component-version-dialog/change-component-version-dialog';
+import {SnippetService} from '../../service/snippet.service';
+import {selectTransform} from '../transform/transform.selectors';
+import {EditLabel} from '../../ui/canvas/items/label/edit-label/edit-label.component';
+import {ErrorHelper} from '../../../../service/error-helper.service';
+import {selectConnectedStateChanged} from '../../../../state/cluster-summary/cluster-summary.selectors';
+import {resetConnectedStateChanged} from '../../../../state/cluster-summary/cluster-summary.actions';
+import {ChangeColorDialog} from '../../ui/canvas/change-color-dialog/change-color-dialog.component';
 import {
     resetPropertyVerificationState,
     verifyProperties
@@ -150,9 +160,13 @@ import {
     selectPropertyVerificationResults,
     selectPropertyVerificationStatus
 } from '../../../../state/property-verification/property-verification.selectors';
-import { VerifyPropertiesRequestContext } from '../../../../state/property-verification';
-import { BackNavigation } from '../../../../state/navigation';
-import { Storage, NiFiCommon } from '@nifi/shared';
+import {VerifyPropertiesRequestContext} from '../../../../state/property-verification';
+import {BackNavigation} from '../../../../state/navigation';
+import {NiFiCommon, Storage} from '@nifi/shared';
+import {
+    ManagementProcessGroup
+} from "../../ui/canvas/items/process-group/management-process-group/management-process-group.component";
+import {openManagementProcessGroupDialog} from "./flow.actions";
 
 @Injectable()
 export class FlowEffects {
@@ -318,6 +332,27 @@ export class FlowEffects {
                                 of(this.snackBarOrFullScreenError(errorResponse))
                             )
                         );
+                    //新增管理页面创建项目
+                    case ComponentType.ManagementProcessGroup:
+                        return from(this.flowService.getParameterContexts()).pipe(
+                            concatLatestFrom(() => this.store.select(selectCurrentParameterContext)),
+                            map(([response, parameterContext]) => {
+                                const dialogRequest: CreateProcessGroupDialogRequest = {
+                                    request,
+                                    parameterContexts: response.parameterContexts
+                                };
+
+                                if (parameterContext) {
+                                    dialogRequest.currentParameterContextId = parameterContext.id;
+                                }
+
+                                return FlowActions.openManagementProcessGroupDialog({ request: dialogRequest });
+                            }),
+                            catchError((errorResponse: HttpErrorResponse) =>
+                                of(this.snackBarOrFullScreenError(errorResponse))
+                            )
+                        );
+                    //结束
                     default:
                         return of(FlowActions.flowSnackbarError({ error: 'Unsupported type of Component.' }));
                 }
@@ -505,6 +540,27 @@ export class FlowEffects {
                 tap((request) => {
                     this.dialog
                         .open(CreateProcessGroup, {
+                            ...MEDIUM_DIALOG,
+                            data: request
+                        })
+                        .afterClosed()
+                        .subscribe(() => {
+                            this.store.dispatch(ErrorActions.clearBannerErrors());
+                            this.store.dispatch(FlowActions.setDragging({ dragging: false }));
+                        });
+                })
+            ),
+        { dispatch: false }
+    );
+
+    openManagementProcessGroupDialog$ = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(FlowActions.openManagementProcessGroupDialog),
+                map((action) => action.request),
+                tap((request) => {
+                    this.dialog
+                        .open(ManagementProcessGroup, {
                             ...MEDIUM_DIALOG,
                             data: request
                         })

@@ -57,7 +57,8 @@ export enum ComponentType {
     FlowAnalysisRule = 'FlowAnalysisRule',
     ParameterProvider = 'ParameterProvider',
     FlowRegistryClient = 'FlowRegistryClient',
-    Flow = 'Flow'
+    Flow = 'Flow',
+    ManagementProcessGroup = 'ManagementProcessGroup'
 }
 
 export interface SelectOption {

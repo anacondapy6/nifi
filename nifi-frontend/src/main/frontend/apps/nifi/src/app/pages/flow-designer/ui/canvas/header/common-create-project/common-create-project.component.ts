@@ -15,7 +15,7 @@ import { FlowEffects } from '../../../../state//flow/flow.effects';
 export class CommonCreateProjectComponent implements OnInit {
     @Output() notify = new EventEmitter();
 
-    type: ComponentType = ComponentType.ProcessGroup;
+    type: ComponentType = ComponentType.ManagementProcessGroup;
 
     constructor(
         private client: Client,
